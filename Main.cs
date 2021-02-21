@@ -270,6 +270,10 @@ namespace WindowsRepoTool
             {
                 try
                 {
+                    client.Headers.Add("X-Machine", "iPhone8,1");
+                    client.Headers.Add("X-Unique-ID", "8843d7f92416211de9ebb963ff4ce28125932878");
+                    client.Headers.Add("X-Firmware", "13.1");
+                    client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
                     client.DownloadFile(downloadURL, $"Debs/{selectedPackageItem}.deb");
                     string titlefinal = "Notice";
                     string messagefinal = "Download Complete, Deb Is Located In The Debs Folder";
