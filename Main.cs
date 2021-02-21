@@ -208,6 +208,10 @@ namespace WindowsRepoTool
                     {
                         client.DownloadFile("http://apt.modmyi.com/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
                     }
+                    else if (repoListBox.SelectedItem.ToString() == "http://cydia.zodttd.com/repo/cydia/" || repoListBox.SelectedItem.ToString() == "https://cydia.zodttd.com/repo/cydia/")
+                    {
+                        client.DownloadFile("http://cydia.zodttd.com/repo/cydia/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
+                    }
                     else
                     {
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
