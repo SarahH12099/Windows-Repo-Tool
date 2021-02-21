@@ -4,3 +4,4 @@ Download: [Releases](https://github.com/SarahH12099/Windows-Repo-Tool/releases)<
 Latest version: 1.0.1<br>
 Made By: SarahH12099<br>
 Testers: KoukoCarlos & BurntToast
+Coded In: C# (C-Sharp)
