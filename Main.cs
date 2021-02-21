@@ -272,17 +272,6 @@ namespace WindowsRepoTool
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            /* Globals.count = 0;
-            packagesListBox.Items.Clear();
-            foreach (string name in Globals.name)
-            {
-                if (name.Substring(6, name.Length - 6).StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
-                    Globals.count = Globals.count + 1;
-                }
-            }
-            packagesListBox.Sorted = true; */
             packagesListBox.Items.Clear();
             packagesListBox.Items.Add("Searching, Please Wait");
             Globals.name.Clear();
@@ -329,6 +318,7 @@ namespace WindowsRepoTool
                 searchBox.Clear();
             }
         }
+
         private void searchBox_Leave(object sender, EventArgs e)
         {
             if (searchBox.Text == string.Empty)
