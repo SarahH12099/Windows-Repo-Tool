@@ -204,11 +204,14 @@ namespace WindowsRepoTool
                     if (repoListBox.SelectedItem.ToString() == "http://apt.thebigboss.org/repofiles/cydia/" || repoListBox.SelectedItem.ToString() == "https://apt.thebigboss.org/repofiles/cydia/") {
                         client.DownloadFile("http://apt.thebigboss.org/repofiles/cydia/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
                     }
+                    else if (repoListBox.SelectedItem.ToString() == "http://apt.modmyi.com/" || repoListBox.SelectedItem.ToString() == "https://apt.modmyi.com/")
+                    {
+                        client.DownloadFile("http://apt.modmyi.com/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
+                    }
                     else
                     {
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
                     }
-                    // client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
                     string zPath = "7za.exe";
                     try
                     {
