@@ -86,7 +86,7 @@ namespace WindowsRepoTool
             
             if (!repoListBox.Items.Contains(finalrepo))
             {
-                if (addRepoBox.Text != "https://")
+                if (addRepoBox.Text != "https://" & addRepoBox.Text != String.Empty)
                 {
                     repoListBox.Items.Add(finalrepo);
                     const string sPath = "Repos.txt";
