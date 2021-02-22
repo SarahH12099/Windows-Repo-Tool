@@ -182,6 +182,36 @@ namespace WindowsRepoTool
             else
             {
                 packagesListBox.Items.Clear();
+                using (var badrepocheck = new WebClient())
+                {
+                    const string sRepos = "https://sarahh12099.github.io/files/badrepos.txt";
+                    Stream stream = badrepocheck.OpenRead(sRepos);
+                    StreamReader reader = new StreamReader(stream);
+                    string check; 
+                    while ((check = reader.ReadLine()) != null)
+                    {
+                        if (check == repoListBox.SelectedItem.ToString())
+                        {
+                            string title = "Warning";
+                            string message = "You are about to open a repo that has been flagged as Dangerous, are you sure you want to open it?";
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result = MessageBox.Show(message, title, buttons);
+                            if (result == DialogResult.Yes)
+                            {
+                                continue;
+                            }
+                            if (result == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    reader.Close();
+                }
                 packagesListBox.Items.Add("Opening Repo, Please Wait");
                 Globals.name.Clear();
                 Globals.version.Clear();
