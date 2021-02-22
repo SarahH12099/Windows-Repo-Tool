@@ -142,31 +142,41 @@ namespace WindowsRepoTool
 
         private void clearSelectedRepoBtn_Click(object sender, EventArgs e)
         {
-            string title = "Notice";
-            string message = "Are you sure you want to clear the selected repo?";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
+            if (repoListBox.SelectedItem == null)
             {
-                if (repoListBox.SelectedItem == null)
+                string titlefinal = "Notice";
+                string messagefinal = "Please select a repo";
+                MessageBox.Show(messagefinal, titlefinal);
+                return;
+            }
+            else
+            {
+                string title = "Notice";
+                string message = "Are you sure you want to clear the selected repo?";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
                 {
-                    string titlefinal = "Notice";
-                    string messagefinal = "No Repo Selected, Please Select A Repo";
-                    MessageBox.Show(messagefinal, titlefinal);
-                }
-                else
-                {
-                    repoListBox.Items.Remove(repoListBox.SelectedItem);
-                    const string sPath = "Repos.txt";
-                    StreamWriter SaveFile = new StreamWriter(sPath);
-                    foreach (var item in repoListBox.Items)
+                    if (repoListBox.SelectedItem == null)
                     {
-                        SaveFile.WriteLine(item.ToString());
+                        string titlefinal = "Notice";
+                        string messagefinal = "No Repo Selected, Please Select A Repo";
+                        MessageBox.Show(messagefinal, titlefinal);
                     }
-                    SaveFile.Close();
-                    string titlefinal = "Notice";
-                    string messagefinal = "Cleared The Selected Repo Successfully";
-                    MessageBox.Show(messagefinal, titlefinal);
+                    else
+                    {
+                        repoListBox.Items.Remove(repoListBox.SelectedItem);
+                        const string sPath = "Repos.txt";
+                        StreamWriter SaveFile = new StreamWriter(sPath);
+                        foreach (var item in repoListBox.Items)
+                        {
+                            SaveFile.WriteLine(item.ToString());
+                        }
+                        SaveFile.Close();
+                        string titlefinal = "Notice";
+                        string messagefinal = "Cleared The Selected Repo Successfully";
+                        MessageBox.Show(messagefinal, titlefinal);
+                    }
                 }
             }
         }
@@ -176,8 +186,9 @@ namespace WindowsRepoTool
             if (repoListBox.SelectedItem == null)
             {
                 string titlefinal = "Notice";
-                string messagefinal = "Test Null";
+                string messagefinal = "Please select a repo";
                 MessageBox.Show(messagefinal, titlefinal);
+                return;
             }
             else
             {
@@ -292,6 +303,13 @@ namespace WindowsRepoTool
 
         private void downloadSelectedPackageBtn_Click(object sender, EventArgs e)
         {
+            if (packagesListBox.SelectedItem == null)
+            {
+                string titlefinal = "Notice";
+                string messagefinal = "Please select a package";
+                MessageBox.Show(messagefinal, titlefinal);
+                return;
+            }
             string selectedPackageItem = packagesListBox.SelectedItem.ToString();
             string repoURL = Globals.repo;
             string packageURL = ((ListItem)packagesListBox.SelectedItem).Value;
