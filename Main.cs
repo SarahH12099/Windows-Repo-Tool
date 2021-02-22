@@ -243,21 +243,6 @@ namespace WindowsRepoTool
                 }
                 using (var client = new WebClient())
                 {
-                    /* if (repoListBox.SelectedItem.ToString() == "http://apt.thebigboss.org/repofiles/cydia/" || repoListBox.SelectedItem.ToString() == "https://apt.thebigboss.org/repofiles/cydia/") {
-                        client.DownloadFile("http://apt.thebigboss.org/repofiles/cydia/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
-                    }
-                    else if (repoListBox.SelectedItem.ToString() == "http://apt.modmyi.com/" || repoListBox.SelectedItem.ToString() == "https://apt.modmyi.com/")
-                    {
-                        client.DownloadFile("http://apt.modmyi.com/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
-                    }
-                    else if (repoListBox.SelectedItem.ToString() == "http://cydia.zodttd.com/repo/cydia/" || repoListBox.SelectedItem.ToString() == "https://cydia.zodttd.com/repo/cydia/")
-                    {
-                        client.DownloadFile("http://cydia.zodttd.com/repo/cydia/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
-                    }
-                    else
-                    {
-                        client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
-                    } */
                     try
                     {
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
@@ -297,7 +282,6 @@ namespace WindowsRepoTool
                         {
                             pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sGz, sFolder);
                         }
-                        // pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sPath, sFolder);
                         Process x = Process.Start(pro);
                         x.WaitForExit();
                     }
