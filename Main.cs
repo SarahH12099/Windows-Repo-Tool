@@ -157,26 +157,17 @@ namespace WindowsRepoTool
                 DialogResult result = MessageBox.Show(message, title, buttons);
                 if (result == DialogResult.Yes)
                 {
-                    if (repoListBox.SelectedItem == null)
+                    repoListBox.Items.Remove(repoListBox.SelectedItem);
+                    const string sPath = "Repos.txt";
+                    StreamWriter SaveFile = new StreamWriter(sPath);
+                    foreach (var item in repoListBox.Items)
                     {
-                        string titlefinal = "Notice";
-                        string messagefinal = "No Repo Selected, Please Select A Repo";
-                        MessageBox.Show(messagefinal, titlefinal);
+                        SaveFile.WriteLine(item.ToString());
                     }
-                    else
-                    {
-                        repoListBox.Items.Remove(repoListBox.SelectedItem);
-                        const string sPath = "Repos.txt";
-                        StreamWriter SaveFile = new StreamWriter(sPath);
-                        foreach (var item in repoListBox.Items)
-                        {
-                            SaveFile.WriteLine(item.ToString());
-                        }
-                        SaveFile.Close();
-                        string titlefinal = "Notice";
-                        string messagefinal = "Cleared The Selected Repo Successfully";
-                        MessageBox.Show(messagefinal, titlefinal);
-                    }
+                    SaveFile.Close();
+                    string titlefinal = "Notice";
+                    string messagefinal = "Cleared The Selected Repo Successfully";
+                    MessageBox.Show(messagefinal, titlefinal);
                 }
             }
         }

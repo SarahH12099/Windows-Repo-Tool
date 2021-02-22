@@ -140,7 +140,7 @@ namespace WindowsRepoTool
             this.Controls.Add(this.addRepoBox);
             this.Controls.Add(this.addRepoBtn);
             this.Name = "Main";
-            this.Text = "Windows Repo Tool v1.0.2";
+            this.Text = "Windows Repo Tool v1.0.3";
             this.ResumeLayout(false);
             this.PerformLayout();
 
