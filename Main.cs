@@ -25,6 +25,7 @@ namespace WindowsRepoTool
             const string sDirectory = "Debs";
             const string sPackages = "Packages";
             const string sDownloads = "Packages.bz2";
+            const string sGz = "Packages.gz";
             if (!Directory.Exists(sDirectory))
             {
                 Directory.CreateDirectory(sDirectory);
@@ -36,6 +37,10 @@ namespace WindowsRepoTool
             if (File.Exists(sDownloads))
             {
                 File.Delete(sDownloads);
+            }
+            if (File.Exists(sGz))
+            {
+                File.Delete(sGz);
             }
             if (!File.Exists(sPath))
             {
@@ -221,11 +226,16 @@ namespace WindowsRepoTool
                 Globals.count = 0;
                 Globals.repo = repoListBox.SelectedItem.ToString();
                 const string sPath = "Packages.bz2";
+                const string sGz = "Packages.gz";
                 const string sFolder = "Packages";
                 const string sPackages = "Packages/Packages";
                 if (File.Exists(sPath))
                 {
                     File.Delete(sPath);
+                }
+                if (File.Exists(sGz))
+                {
+                    File.Delete(sGz);
                 }
                 if (Directory.Exists(sFolder))
                 {
@@ -233,7 +243,7 @@ namespace WindowsRepoTool
                 }
                 using (var client = new WebClient())
                 {
-                    if (repoListBox.SelectedItem.ToString() == "http://apt.thebigboss.org/repofiles/cydia/" || repoListBox.SelectedItem.ToString() == "https://apt.thebigboss.org/repofiles/cydia/") {
+                    /* if (repoListBox.SelectedItem.ToString() == "http://apt.thebigboss.org/repofiles/cydia/" || repoListBox.SelectedItem.ToString() == "https://apt.thebigboss.org/repofiles/cydia/") {
                         client.DownloadFile("http://apt.thebigboss.org/repofiles/cydia/dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
                     }
                     else if (repoListBox.SelectedItem.ToString() == "http://apt.modmyi.com/" || repoListBox.SelectedItem.ToString() == "https://apt.modmyi.com/")
@@ -247,6 +257,31 @@ namespace WindowsRepoTool
                     else
                     {
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
+                    } */
+                    try
+                    {
+                        client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
+                    }
+                    catch (System.Exception ExOne)
+                    {
+                        try
+                        {
+                            client.DownloadFile(repoListBox.SelectedItem + "dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
+                        }
+                        catch (System.Exception ExTwo)
+                        {
+                            try
+                            {
+                                client.DownloadFile(repoListBox.SelectedItem + "Packages.gz", "Packages.gz");
+                            }
+                            catch (System.Exception ExThree)
+                            {
+                                string titlefinal = "Notice";
+                                string messagefinal = "Unable to connect to repo, are you connected to the internet and did you type the repo url correctly?";
+                                MessageBox.Show(messagefinal, titlefinal);
+                                return;
+                            }
+                        }
                     }
                     string zPath = "7za.exe";
                     try
@@ -254,7 +289,15 @@ namespace WindowsRepoTool
                         ProcessStartInfo pro = new ProcessStartInfo();
                         pro.WindowStyle = ProcessWindowStyle.Hidden;
                         pro.FileName = zPath;
-                        pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sPath, sFolder);
+                        if (File.Exists(sPath))
+                        {
+                            pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sPath, sFolder);
+                        }
+                        if (File.Exists(sGz))
+                        {
+                            pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sGz, sFolder);
+                        }
+                        // pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sPath, sFolder);
                         Process x = Process.Start(pro);
                         x.WaitForExit();
                     }
