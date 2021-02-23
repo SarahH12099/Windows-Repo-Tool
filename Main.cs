@@ -67,6 +67,8 @@ namespace WindowsRepoTool
         public class ListItem
         {
             public string Name { get; set; }
+            public string Description { get; set; }
+            public string Version { get; set; }
             public string Value { get; set; }
 
             public override string ToString()
@@ -102,9 +104,7 @@ namespace WindowsRepoTool
                     SaveFile.Close();
                     addRepoBox.Clear();
                     addRepoBox.Text = "https://";
-                    string title = "Notice";
-                    string message = "Added Repo Successfully";
-                    MessageBox.Show(message, title);
+                    return;
                 }
                 else
                 {
