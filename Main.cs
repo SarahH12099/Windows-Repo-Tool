@@ -355,7 +355,14 @@ namespace WindowsRepoTool
                     packagesListBox.Items.Clear();
                     foreach (string name in Globals.name)
                     {
-                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
+                        try
+                        {
+                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
+                        }
+                        catch (System.Exception Ex)
+                        {
+                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
+                        }
                         Globals.count = Globals.count + 1;
                     }
                     packagesListBox.Sorted = true;
