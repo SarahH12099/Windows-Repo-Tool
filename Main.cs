@@ -60,7 +60,7 @@ namespace WindowsRepoTool
             public static List<string> list = new List<string>();
             public static List<string> name = new List<string>();
             public static List<string> version = new List<string>();
-            public static String repo = "";
+            public static string repo = "";
             public static int count = 0;
         }
 
