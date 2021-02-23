@@ -57,12 +57,11 @@ namespace WindowsRepoTool
 
         public static class Globals
         {
-            // public static List<string> list = new List<string>();
             public static List<string> package = new List<string>();
             public static List<string> name = new List<string>();
             public static List<string> description = new List<string>();
             public static List<string> version = new List<string>();
-            public static List<string> size = new List<string>();
+            public static List<string> link = new List<string>();
             public static List<string> author = new List<string>();
             public static List<string> maintainer = new List<string>();
             public static string repo = "";
@@ -75,7 +74,7 @@ namespace WindowsRepoTool
             public string Name { get; set; }
             public string Description { get; set; }
             public string Version { get; set; }
-            public string Size { get; set; }
+            public string Link { get; set; }
             public string Author { get; set; }
             public string Maintainer { get; set; }
 
@@ -299,9 +298,17 @@ namespace WindowsRepoTool
                     string[] lines = File.ReadAllLines(sPackages);
                     foreach (string line in lines)
                     {
+                        if (line.StartsWith("Package"))
+                        {
+                            Globals.package.Add(line);
+                        }
                         if (line.StartsWith("Name"))
                         {
                             Globals.name.Add(line);
+                        }
+                        if (line.StartsWith("Description"))
+                        {
+                            Globals.description.Add(line);
                         }
                         if (line.StartsWith("Version"))
                         {
@@ -309,13 +316,22 @@ namespace WindowsRepoTool
                         }
                         if (line.StartsWith("Filename"))
                         {
-                            // Globals.list.Add(line);
+                            Globals.link.Add(line);
+                        }
+                        if (line.StartsWith("Author"))
+                        {
+                            Globals.author.Add(line);
+                        }
+                        if (line.StartsWith("Maintainer"))
+                        {
+                            Globals.maintainer.Add(line);
                         }
                     }
                     packagesListBox.Items.Clear();
                     foreach (string name in Globals.name)
                     {
-                        packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
+                        // packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
+                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count].Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9) });
                         Globals.count = Globals.count + 1;
                     }
                     packagesListBox.Sorted = true;
