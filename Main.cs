@@ -111,6 +111,7 @@ namespace WindowsRepoTool
                     string title = "Notice";
                     string message = "Please Type In A Repo";
                     MessageBox.Show(message, title);
+                    return;
                 }
             }
             else
@@ -120,6 +121,7 @@ namespace WindowsRepoTool
                 string title = "Notice";
                 string message = "You Already Have This Repo Added";
                 MessageBox.Show(message, title);
+                return;
             };
         }
 
