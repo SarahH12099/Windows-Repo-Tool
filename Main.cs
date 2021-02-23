@@ -232,27 +232,10 @@ namespace WindowsRepoTool
                     reader.Close();
                 }
                 packagesListBox.Items.Add("Opening Repo, Please Wait");
-                Globals.name.Clear();
-                Globals.version.Clear();
-                Globals.list.Clear();
-                Globals.count = 0;
-                Globals.repo = repoListBox.SelectedItem.ToString();
                 const string sPath = "Packages.bz2";
                 const string sGz = "Packages.gz";
                 const string sFolder = "Packages";
                 const string sPackages = "Packages/Packages";
-                if (File.Exists(sPath))
-                {
-                    File.Delete(sPath);
-                }
-                if (File.Exists(sGz))
-                {
-                    File.Delete(sGz);
-                }
-                if (Directory.Exists(sFolder))
-                {
-                    Directory.Delete(sFolder, true);
-                }
                 using (var client = new WebClient())
                 {
                     try
@@ -274,7 +257,7 @@ namespace WindowsRepoTool
                             catch (System.Exception ExThree)
                             {
                                 string titlefinal = "Notice";
-                                string messagefinal = "Unable to connect to repo, are you connected to the internet and did you type the repo url correctly?";
+                                string messagefinal = "Unable to connect to repo, are you connected to the internet and did you type the repo url correctly? \n\n" + ExThree;
                                 MessageBox.Show(messagefinal, titlefinal);
                                 return;
                             }
@@ -302,33 +285,106 @@ namespace WindowsRepoTool
                         string titlefinal = "Notice";
                         string messagefinal = Ex.ToString();
                         MessageBox.Show(messagefinal, titlefinal);
+                        return;
                     }
-
-                    string[] lines = File.ReadAllLines(sPackages);
-                    foreach (string line in lines)
-                    {
-                        if (line.StartsWith("Name"))
-                        {
-                            Globals.name.Add(line);
-                        }
-                        if (line.StartsWith("Version"))
-                        {
-                            Globals.version.Add(line);
-                        }
-                        if (line.StartsWith("Filename"))
-                        {
-                            Globals.list.Add(line);
-                        }
-                    }
-                    packagesListBox.Items.Clear();
-                    foreach (string name in Globals.name)
-                    {
-                        packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
-                        Globals.count = Globals.count + 1;
-                    }
-                    packagesListBox.Sorted = true;
                 }
-            }
+                    /* Globals.name.Clear();
+                    Globals.version.Clear();
+                    Globals.list.Clear();
+                    Globals.count = 0;
+                    Globals.repo = repoListBox.SelectedItem.ToString();
+                    const string sPath = "Packages.bz2";
+                    const string sGz = "Packages.gz";
+                    const string sFolder = "Packages";
+                    const string sPackages = "Packages/Packages";
+                    if (File.Exists(sPath))
+                    {
+                        File.Delete(sPath);
+                    }
+                    if (File.Exists(sGz))
+                    {
+                        File.Delete(sGz);
+                    }
+                    if (Directory.Exists(sFolder))
+                    {
+                        Directory.Delete(sFolder, true);
+                    }
+                    using (var client = new WebClient())
+                    {
+                        try
+                        {
+                            client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
+                        }
+                        catch (System.Exception ExOne)
+                        {
+                            try
+                            {
+                                client.DownloadFile(repoListBox.SelectedItem + "dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
+                            }
+                            catch (System.Exception ExTwo)
+                            {
+                                try
+                                {
+                                    client.DownloadFile(repoListBox.SelectedItem + "Packages.gz", "Packages.gz");
+                                }
+                                catch (System.Exception ExThree)
+                                {
+                                    string titlefinal = "Notice";
+                                    string messagefinal = "Unable to connect to repo, are you connected to the internet and did you type the repo url correctly?";
+                                    MessageBox.Show(messagefinal, titlefinal);
+                                    return;
+                                }
+                            }
+                        }
+                        string zPath = "7za.exe";
+                        try
+                        {
+                            ProcessStartInfo pro = new ProcessStartInfo();
+                            pro.WindowStyle = ProcessWindowStyle.Hidden;
+                            pro.FileName = zPath;
+                            if (File.Exists(sPath))
+                            {
+                                pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sPath, sFolder);
+                            }
+                            if (File.Exists(sGz))
+                            {
+                                pro.Arguments = string.Format("x \"{0}\" -y -o\"{1}\"", sGz, sFolder);
+                            }
+                            Process x = Process.Start(pro);
+                            x.WaitForExit();
+                        }
+                        catch (System.Exception Ex)
+                        {
+                            string titlefinal = "Notice";
+                            string messagefinal = Ex.ToString();
+                            MessageBox.Show(messagefinal, titlefinal);
+                        }
+
+                        string[] lines = File.ReadAllLines(sPackages);
+                        foreach (string line in lines)
+                        {
+                            if (line.StartsWith("Name"))
+                            {
+                                Globals.name.Add(line);
+                            }
+                            if (line.StartsWith("Version"))
+                            {
+                                Globals.version.Add(line);
+                            }
+                            if (line.StartsWith("Filename"))
+                            {
+                                Globals.list.Add(line);
+                            }
+                        }
+                        packagesListBox.Items.Clear();
+                        foreach (string name in Globals.name)
+                        {
+                            packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
+                            Globals.count = Globals.count + 1;
+                        }
+                        packagesListBox.Sorted = true;
+                    }*/
+                }
         }
 
         private void downloadSelectedPackageBtn_Click(object sender, EventArgs e)
