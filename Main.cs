@@ -62,8 +62,6 @@ namespace WindowsRepoTool
             public static List<string> description = new List<string>();
             public static List<string> version = new List<string>();
             public static List<string> link = new List<string>();
-            public static List<string> author = new List<string>();
-            public static List<string> maintainer = new List<string>();
             public static string repo = "";
             public static int count = 0;
         }
@@ -75,8 +73,6 @@ namespace WindowsRepoTool
             public string Description { get; set; }
             public string Version { get; set; }
             public string Link { get; set; }
-            public string Author { get; set; }
-            public string Maintainer { get; set; }
 
             public override string ToString()
             {
@@ -239,26 +235,58 @@ namespace WindowsRepoTool
                     reader.Close();
                 }
                 packagesListBox.Items.Add("Opening Repo, Please Wait");
+                Globals.package.Clear(); 
+                Globals.name.Clear();
+                Globals.description.Clear();
+                Globals.version.Clear();
+                Globals.link.Clear();
+                // Globals.author.Clear();
+                Globals.count = 0;
+                Globals.repo = repoListBox.SelectedItem.ToString();
                 const string sPath = "Packages.bz2";
                 const string sGz = "Packages.gz";
                 const string sFolder = "Packages";
                 const string sPackages = "Packages/Packages";
+                if (File.Exists(sPath))
+                {
+                    File.Delete(sPath);
+                }
+                if (File.Exists(sGz))
+                {
+                    File.Delete(sGz);
+                }
+                if (Directory.Exists(sFolder))
+                {
+                    Directory.Delete(sFolder, true);
+                }
                 using (var client = new WebClient())
                 {
                     try
                     {
+                        client.Headers.Add("X-Machine", "iPhone8,1");
+                        client.Headers.Add("X-Unique-ID", "8843d7f92416211de9ebb963ff4ce28125932878");
+                        client.Headers.Add("X-Firmware", "13.1");
+                        client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592"); 
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
                     }
                     catch (System.Exception ExOne)
                     {
                         try
                         {
+                            client.Headers.Add("X-Machine", "iPhone8,1");
+                            client.Headers.Add("X-Unique-ID", "8843d7f92416211de9ebb963ff4ce28125932878");
+                            client.Headers.Add("X-Firmware", "13.1");
+                            client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
                             client.DownloadFile(repoListBox.SelectedItem + "dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
                         }
                         catch (System.Exception ExTwo)
                         {
                             try
                             {
+                                client.Headers.Add("X-Machine", "iPhone8,1");
+                                client.Headers.Add("X-Unique-ID", "8843d7f92416211de9ebb963ff4ce28125932878");
+                                client.Headers.Add("X-Firmware", "13.1");
+                                client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
                                 client.DownloadFile(repoListBox.SelectedItem + "Packages.gz", "Packages.gz");
                             }
                             catch (System.Exception ExThree)
@@ -300,38 +328,34 @@ namespace WindowsRepoTool
                     {
                         if (line.StartsWith("Package"))
                         {
-                            Globals.package.Add(line);
+                            string package = line.Substring(9, line.Length - 9).ToString();
+                            Globals.package.Add(package);
                         }
                         if (line.StartsWith("Name"))
                         {
-                            Globals.name.Add(line);
+                            string name = line.Substring(6, line.Length - 6).ToString();
+                            Globals.name.Add(name);
                         }
                         if (line.StartsWith("Description"))
                         {
-                            Globals.description.Add(line);
+                            string description = line.Substring(13, line.Length - 13).ToString();
+                            Globals.description.Add(description);
                         }
                         if (line.StartsWith("Version"))
                         {
-                            Globals.version.Add(line);
+                            string version = line.Substring(9, line.Length - 9).ToString();
+                            Globals.version.Add(version);
                         }
                         if (line.StartsWith("Filename"))
                         {
-                            Globals.link.Add(line);
-                        }
-                        if (line.StartsWith("Author"))
-                        {
-                            Globals.author.Add(line);
-                        }
-                        if (line.StartsWith("Maintainer"))
-                        {
-                            Globals.maintainer.Add(line);
+                            string link = line.Substring(10, line.Length - 10).ToString(); 
+                            Globals.link.Add(link);
                         }
                     }
                     packagesListBox.Items.Clear();
                     foreach (string name in Globals.name)
                     {
-                        // packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
-                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count].Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9) });
+                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
                         Globals.count = Globals.count + 1;
                     }
                     packagesListBox.Sorted = true;
@@ -341,6 +365,16 @@ namespace WindowsRepoTool
 
         private void downloadSelectedPackageBtn_Click(object sender, EventArgs e)
         {
+            if (packagesListBox.SelectedItem == null)
+            {
+                string titlefinal = "Notice";
+                string messagefinal = "Please select a package";
+                MessageBox.Show(messagefinal, titlefinal);
+                return;
+            }
+            string selectedPackageItem = packagesListBox.SelectedItem.ToString();
+            string packageURL = ((ListItem)packagesListBox.SelectedItem).Link;
+            MessageBox.Show(packageURL);
             /* if (packagesListBox.SelectedItem == null)
             {
                 string titlefinal = "Notice";
