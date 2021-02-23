@@ -144,6 +144,11 @@ namespace WindowsRepoTool
                 string titlefinal = "Notice";
                 string messagefinal = "Cleared All Repos Successfully";
                 MessageBox.Show(messagefinal, titlefinal);
+                return;
+            }
+            if (result == DialogResult.No)
+            {
+                return;
             }
         }
 
@@ -175,6 +180,11 @@ namespace WindowsRepoTool
                     string titlefinal = "Notice";
                     string messagefinal = "Cleared The Selected Repo Successfully";
                     MessageBox.Show(messagefinal, titlefinal);
+                    return;
+                }
+                if (result == DialogResult.No)
+                {
+                    return;
                 }
             }
         }
