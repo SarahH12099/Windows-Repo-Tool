@@ -316,7 +316,7 @@ namespace WindowsRepoTool
                         Process x = Process.Start(pro);
                         x.WaitForExit();
                     }
-                    catch (System.Exception Ex)
+                    catch (Exception Ex)
                     {
                         string titlefinal = "Notice";
                         string messagefinal = Ex.ToString();
@@ -360,7 +360,7 @@ namespace WindowsRepoTool
                         {
                             packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
                         }
-                        catch (System.Exception Ex)
+                        catch (Exception Ex)
                         {
                             packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
                         }
@@ -401,7 +401,7 @@ namespace WindowsRepoTool
                     string messagefinal = "Download Complete, Deb Is Located In The Debs Folder";
                     MessageBox.Show(messagefinal, titlefinal);
                 }
-                catch (System.Exception Ex)
+                catch (Exception Ex)
                 {
                     string titleexception = "Notice";
                     string messageexception = "You can't download paid packages with Windows Repo Tool \n\n" + Ex.ToString();
@@ -473,7 +473,7 @@ namespace WindowsRepoTool
                     {
                         packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
                     }
-                    catch (System.Exception Ex)
+                    catch (Exception Ex)
                     {
                         packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
                     }
