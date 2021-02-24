@@ -382,9 +382,13 @@ namespace WindowsRepoTool
             string selectedPackageItem = packagesListBox.SelectedItem.ToString();
             string repoURL = Globals.repo;
             string packageURL = ((ListItem)packagesListBox.SelectedItem).Link;
-            string downloadURL = repoURL + packageURL.Substring(10, packageURL.Length - 10);
+            string downloadURL = repoURL + packageURL;
             using (var client = new WebClient())
             {
+                if (!Directory.Exists("Debs"))
+                {
+                    Directory.CreateDirectory("Debs");
+                }
                 try
                 {
                     client.Headers.Add("X-Machine", "iPhone8,1");
@@ -417,11 +421,13 @@ namespace WindowsRepoTool
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            /* packagesListBox.Items.Clear();
+            packagesListBox.Items.Clear();
             packagesListBox.Items.Add("Searching, Please Wait");
+            Globals.package.Clear();
             Globals.name.Clear();
+            Globals.description.Clear();
             Globals.version.Clear();
-            Globals.list.Clear();
+            Globals.link.Clear();
             Globals.count = 0;
             const string sPackages = "Packages/Packages";
             string[] lines = { };
@@ -431,29 +437,49 @@ namespace WindowsRepoTool
             }
             foreach (string line in lines)
             {
+                if (line.StartsWith("Package"))
+                {
+                    string package = line.Substring(9, line.Length - 9).ToString();
+                    Globals.package.Add(package);
+                }
                 if (line.StartsWith("Name"))
                 {
-                    Globals.name.Add(line);
+                    string name = line.Substring(6, line.Length - 6).ToString();
+                    Globals.name.Add(name);
+                }
+                if (line.StartsWith("Description"))
+                {
+                    string description = line.Substring(13, line.Length - 13).ToString();
+                    Globals.description.Add(description);
                 }
                 if (line.StartsWith("Version"))
                 {
-                    Globals.version.Add(line);
+                    string version = line.Substring(9, line.Length - 9).ToString();
+                    Globals.version.Add(version);
                 }
                 if (line.StartsWith("Filename"))
                 {
-                    Globals.list.Add(line);
+                    string link = line.Substring(10, line.Length - 10).ToString();
+                    Globals.link.Add(link);
                 }
             }
             packagesListBox.Items.Clear();
             foreach (string name in Globals.name)
             {
-                if (name.Substring(6, name.Length - 6).StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
+                if (name.StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    packagesListBox.Items.Add(new ListItem { Name = name.Substring(6, name.Length - 6) + " v" + Globals.version[Globals.count].Substring(9, Globals.version[Globals.count].Length - 9), Value = Globals.list[Globals.count] });
+                    try
+                    {
+                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
+                    }
+                    catch (System.Exception Ex)
+                    {
+                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
+                    }
                 }
                 Globals.count = Globals.count + 1;
             }
-            packagesListBox.Sorted = true; */
+            packagesListBox.Sorted = true;
         }
 
         private void searchBox_Enter(object sender, EventArgs e)
