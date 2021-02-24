@@ -270,7 +270,7 @@ namespace WindowsRepoTool
                         client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592"); 
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
                     }
-                    catch (System.Exception ExOne)
+                    catch (Exception ExOne)
                     {
                         try
                         {
@@ -280,7 +280,7 @@ namespace WindowsRepoTool
                             client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
                             client.DownloadFile(repoListBox.SelectedItem + "dists/stable/main/binary-iphoneos-arm/Packages.bz2", "Packages.bz2");
                         }
-                        catch (System.Exception ExTwo)
+                        catch (Exception ExTwo)
                         {
                             try
                             {
@@ -290,7 +290,7 @@ namespace WindowsRepoTool
                                 client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
                                 client.DownloadFile(repoListBox.SelectedItem + "Packages.gz", "Packages.gz");
                             }
-                            catch (System.Exception ExThree)
+                            catch (Exception ExThree)
                             {
                                 string titlefinal = "Notice";
                                 string messagefinal = "Unable to connect to repo, are you connected to the internet and did you type the repo url correctly? \n\n" + ExThree;
