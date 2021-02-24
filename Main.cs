@@ -205,6 +205,7 @@ namespace WindowsRepoTool
             else
             {
                 packagesListBox.Items.Clear();
+                detailsBox.Clear();
                 using (var badrepocheck = new WebClient())
                 {
                     const string sRepos = "https://sarahh12099.github.io/files/badrepos.txt";
