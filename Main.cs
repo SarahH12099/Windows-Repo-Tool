@@ -407,15 +407,15 @@ namespace WindowsRepoTool
 
         private void packagesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            detailsListBox.Items.Clear();
+            detailsBox.Clear();
             string package = ((ListItem)packagesListBox.SelectedItem).Package;
             string name = ((ListItem)packagesListBox.SelectedItem).SingleName;
             string version = ((ListItem)packagesListBox.SelectedItem).Version;
             string description = ((ListItem)packagesListBox.SelectedItem).Description;
-            detailsListBox.Items.Add("ID: " + package);
-            detailsListBox.Items.Add("\nName: " + name);
+            detailsBox.Text = "ID: " + package + Environment.NewLine + "Name: " + name + Environment.NewLine + "Version: " + version + Environment.NewLine + "Description: " + description;
+            /* detailsListBox.Items.Add("\nName: " + name);
             detailsListBox.Items.Add("\nVersion: " + version);
-            detailsListBox.Items.Add("\nDescription: " + description);
+            detailsListBox.Items.Add("\nDescription: " + description); */
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)

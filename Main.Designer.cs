@@ -38,7 +38,7 @@ namespace WindowsRepoTool
             this.packagesListBox = new System.Windows.Forms.ListBox();
             this.downloadSelectedPackageBtn = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.detailsListBox = new System.Windows.Forms.ListBox();
+            this.detailsBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addRepoBtn
@@ -127,21 +127,20 @@ namespace WindowsRepoTool
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
-            // detailsListBox
+            // detailsBox
             // 
-            this.detailsListBox.FormattingEnabled = true;
-            this.detailsListBox.ItemHeight = 16;
-            this.detailsListBox.Location = new System.Drawing.Point(227, 391);
-            this.detailsListBox.Name = "detailsListBox";
-            this.detailsListBox.Size = new System.Drawing.Size(561, 116);
-            this.detailsListBox.TabIndex = 9;
+            this.detailsBox.Location = new System.Drawing.Point(227, 390);
+            this.detailsBox.Multiline = true;
+            this.detailsBox.Name = "detailsBox";
+            this.detailsBox.Size = new System.Drawing.Size(561, 119);
+            this.detailsBox.TabIndex = 10;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 549);
-            this.Controls.Add(this.detailsListBox);
+            this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.downloadSelectedPackageBtn);
             this.Controls.Add(this.packagesListBox);
@@ -169,7 +168,7 @@ namespace WindowsRepoTool
         private System.Windows.Forms.ListBox packagesListBox;
         private System.Windows.Forms.Button downloadSelectedPackageBtn;
         private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.ListBox detailsListBox;
+        private System.Windows.Forms.TextBox detailsBox;
     }
 }
 
