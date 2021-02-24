@@ -38,6 +38,7 @@ namespace WindowsRepoTool
             this.packagesListBox = new System.Windows.Forms.ListBox();
             this.downloadSelectedPackageBtn = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.detailsListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // addRepoBtn
@@ -104,12 +105,13 @@ namespace WindowsRepoTool
             this.packagesListBox.Name = "packagesListBox";
             this.packagesListBox.Size = new System.Drawing.Size(561, 372);
             this.packagesListBox.TabIndex = 6;
+            this.packagesListBox.SelectedIndexChanged += new System.EventHandler(this.packagesListBox_SelectedIndexChanged);
             // 
             // downloadSelectedPackageBtn
             // 
-            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(550, 395);
+            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(546, 515);
             this.downloadSelectedPackageBtn.Name = "downloadSelectedPackageBtn";
-            this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(238, 29);
+            this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(242, 29);
             this.downloadSelectedPackageBtn.TabIndex = 7;
             this.downloadSelectedPackageBtn.Text = "Download Selected Package";
             this.downloadSelectedPackageBtn.UseVisualStyleBackColor = true;
@@ -117,7 +119,7 @@ namespace WindowsRepoTool
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(227, 398);
+            this.searchBox.Location = new System.Drawing.Point(227, 515);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(297, 22);
             this.searchBox.TabIndex = 8;
@@ -125,11 +127,21 @@ namespace WindowsRepoTool
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
+            // detailsListBox
+            // 
+            this.detailsListBox.FormattingEnabled = true;
+            this.detailsListBox.ItemHeight = 16;
+            this.detailsListBox.Location = new System.Drawing.Point(227, 391);
+            this.detailsListBox.Name = "detailsListBox";
+            this.detailsListBox.Size = new System.Drawing.Size(561, 116);
+            this.detailsListBox.TabIndex = 9;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 549);
+            this.Controls.Add(this.detailsListBox);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.downloadSelectedPackageBtn);
             this.Controls.Add(this.packagesListBox);
@@ -157,6 +169,7 @@ namespace WindowsRepoTool
         private System.Windows.Forms.ListBox packagesListBox;
         private System.Windows.Forms.Button downloadSelectedPackageBtn;
         private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.ListBox detailsListBox;
     }
 }
 

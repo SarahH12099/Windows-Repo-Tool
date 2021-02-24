@@ -70,6 +70,7 @@ namespace WindowsRepoTool
         {
             public string Package { get; set; }
             public string Name { get; set; }
+            public string SingleName { get; set; }
             public string Description { get; set; }
             public string Version { get; set; }
             public string Link { get; set; }
@@ -356,11 +357,11 @@ namespace WindowsRepoTool
                     {
                         try
                         {
-                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
+                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
                         }
                         catch (System.Exception Ex)
                         {
-                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
+                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
                         }
                         Globals.count = Globals.count + 1;
                     }
@@ -402,6 +403,19 @@ namespace WindowsRepoTool
                     MessageBox.Show(messageexception, titleexception);
                 }
             }
+        }
+
+        private void packagesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            detailsListBox.Items.Clear();
+            string package = ((ListItem)packagesListBox.SelectedItem).Package;
+            string name = ((ListItem)packagesListBox.SelectedItem).SingleName;
+            string version = ((ListItem)packagesListBox.SelectedItem).Version;
+            string description = ((ListItem)packagesListBox.SelectedItem).Description;
+            detailsListBox.Items.Add("ID: " + package);
+            detailsListBox.Items.Add("\nName: " + name);
+            detailsListBox.Items.Add("\nVersion: " + version);
+            detailsListBox.Items.Add("\nDescription: " + description);
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
