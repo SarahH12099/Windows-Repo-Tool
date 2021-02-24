@@ -240,7 +240,6 @@ namespace WindowsRepoTool
                 Globals.description.Clear();
                 Globals.version.Clear();
                 Globals.link.Clear();
-                // Globals.author.Clear();
                 Globals.count = 0;
                 Globals.repo = repoListBox.SelectedItem.ToString();
                 const string sPath = "Packages.bz2";
@@ -380,18 +379,8 @@ namespace WindowsRepoTool
                 return;
             }
             string selectedPackageItem = packagesListBox.SelectedItem.ToString();
-            string packageURL = ((ListItem)packagesListBox.SelectedItem).Link;
-            MessageBox.Show(packageURL);
-            /* if (packagesListBox.SelectedItem == null)
-            {
-                string titlefinal = "Notice";
-                string messagefinal = "Please select a package";
-                MessageBox.Show(messagefinal, titlefinal);
-                return;
-            }
-            string selectedPackageItem = packagesListBox.SelectedItem.ToString();
             string repoURL = Globals.repo;
-            string packageURL = ((ListItem)packagesListBox.SelectedItem).Value;
+            string packageURL = ((ListItem)packagesListBox.SelectedItem).Link;
             string downloadURL = repoURL + packageURL.Substring(10, packageURL.Length - 10);
             using (var client = new WebClient())
             {
@@ -412,7 +401,7 @@ namespace WindowsRepoTool
                     string messageexception = "You can't download paid packages with Windows Repo Tool \n\n" + Ex.ToString();
                     MessageBox.Show(messageexception, titleexception);
                 }
-            } */
+            }
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
