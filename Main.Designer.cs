@@ -43,7 +43,7 @@ namespace WindowsRepoTool
             // 
             // addRepoBtn
             // 
-            this.addRepoBtn.Location = new System.Drawing.Point(12, 290);
+            this.addRepoBtn.Location = new System.Drawing.Point(12, 410);
             this.addRepoBtn.Name = "addRepoBtn";
             this.addRepoBtn.Size = new System.Drawing.Size(181, 29);
             this.addRepoBtn.TabIndex = 0;
@@ -53,7 +53,7 @@ namespace WindowsRepoTool
             // 
             // addRepoBox
             // 
-            this.addRepoBox.Location = new System.Drawing.Point(12, 262);
+            this.addRepoBox.Location = new System.Drawing.Point(12, 382);
             this.addRepoBox.Name = "addRepoBox";
             this.addRepoBox.Size = new System.Drawing.Size(181, 22);
             this.addRepoBox.TabIndex = 1;
@@ -64,12 +64,12 @@ namespace WindowsRepoTool
             this.repoListBox.ItemHeight = 16;
             this.repoListBox.Location = new System.Drawing.Point(12, 12);
             this.repoListBox.Name = "repoListBox";
-            this.repoListBox.Size = new System.Drawing.Size(181, 244);
+            this.repoListBox.Size = new System.Drawing.Size(181, 356);
             this.repoListBox.TabIndex = 2;
             // 
             // clearAllReposBtn
             // 
-            this.clearAllReposBtn.Location = new System.Drawing.Point(12, 395);
+            this.clearAllReposBtn.Location = new System.Drawing.Point(12, 515);
             this.clearAllReposBtn.Name = "clearAllReposBtn";
             this.clearAllReposBtn.Size = new System.Drawing.Size(181, 29);
             this.clearAllReposBtn.TabIndex = 3;
@@ -79,7 +79,7 @@ namespace WindowsRepoTool
             // 
             // clearSelectedRepoBtn
             // 
-            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(12, 360);
+            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(12, 480);
             this.clearSelectedRepoBtn.Name = "clearSelectedRepoBtn";
             this.clearSelectedRepoBtn.Size = new System.Drawing.Size(181, 29);
             this.clearSelectedRepoBtn.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace WindowsRepoTool
             // 
             // openSelectedRepoBtn
             // 
-            this.openSelectedRepoBtn.Location = new System.Drawing.Point(12, 325);
+            this.openSelectedRepoBtn.Location = new System.Drawing.Point(12, 445);
             this.openSelectedRepoBtn.Name = "openSelectedRepoBtn";
             this.openSelectedRepoBtn.Size = new System.Drawing.Size(181, 29);
             this.openSelectedRepoBtn.TabIndex = 5;
@@ -109,9 +109,9 @@ namespace WindowsRepoTool
             // 
             // downloadSelectedPackageBtn
             // 
-            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(546, 515);
+            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(543, 515);
             this.downloadSelectedPackageBtn.Name = "downloadSelectedPackageBtn";
-            this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(242, 29);
+            this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(245, 29);
             this.downloadSelectedPackageBtn.TabIndex = 7;
             this.downloadSelectedPackageBtn.Text = "Download Selected Package";
             this.downloadSelectedPackageBtn.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@ namespace WindowsRepoTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 549);
+            this.ClientSize = new System.Drawing.Size(800, 553);
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.downloadSelectedPackageBtn);

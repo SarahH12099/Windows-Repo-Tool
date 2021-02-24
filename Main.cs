@@ -413,9 +413,6 @@ namespace WindowsRepoTool
             string version = ((ListItem)packagesListBox.SelectedItem).Version;
             string description = ((ListItem)packagesListBox.SelectedItem).Description;
             detailsBox.Text = "ID: " + package + Environment.NewLine + "Name: " + name + Environment.NewLine + "Version: " + version + Environment.NewLine + "Description: " + description;
-            /* detailsListBox.Items.Add("\nName: " + name);
-            detailsListBox.Items.Add("\nVersion: " + version);
-            detailsListBox.Items.Add("\nDescription: " + description); */
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -461,18 +458,18 @@ namespace WindowsRepoTool
 
         private void searchBox_Enter(object sender, EventArgs e)
         {
-            /* if (searchBox.Text == "Search Packages")
+            if (searchBox.Text == "Search Packages")
             {
                 searchBox.Clear();
-            } */
+            }
         }
 
         private void searchBox_Leave(object sender, EventArgs e)
         {
-            /* if (searchBox.Text == string.Empty)
+            if (searchBox.Text == string.Empty)
             {
                 searchBox.Text = "Search Packages";
-            } */
+            }
         }
     }
 }
