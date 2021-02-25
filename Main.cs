@@ -59,9 +59,11 @@ namespace WindowsRepoTool
         {
             public static List<string> package = new List<string>();
             public static List<string> name = new List<string>();
-            public static List<string> description = new List<string>();
             public static List<string> version = new List<string>();
             public static List<string> link = new List<string>();
+            public static List<string> description = new List<string>();
+            public static List<string> author = new List<string>();
+            public static List<string> maintainer = new List<string>();
             public static string repo = "";
             public static int count = 0;
         }
@@ -71,9 +73,11 @@ namespace WindowsRepoTool
             public string Package { get; set; }
             public string Name { get; set; }
             public string SingleName { get; set; }
-            public string Description { get; set; }
             public string Version { get; set; }
             public string Link { get; set; }
+            public string Description { get; set; }
+            public string Author { get; set; }
+            public string Maintainer { get; set; }
 
             public override string ToString()
             {
