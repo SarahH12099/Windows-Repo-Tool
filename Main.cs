@@ -64,12 +64,9 @@ namespace WindowsRepoTool
             public static List<string> description = new List<string>();
             public static List<string> author = new List<string>();
             public static List<string> maintainer = new List<string>();
-            // public static List<string> test + Globals.count = new List<string>();
             public static string repo = "";
             public static int count = 0;
-            public static int arraycount = 1;
-            public static List<string> test = new List<string>();
-            public static string[] test2 = { };
+            public static int arraycount = 0;
         }
 
         public class ListItem
@@ -258,6 +255,7 @@ namespace WindowsRepoTool
                 const string sGz = "Packages.gz";
                 const string sFolder = "Packages";
                 const string sPackages = "Packages/Packages";
+                const string sText = "Packages.txt";
                 if (File.Exists(sPath))
                 {
                     File.Delete(sPath);
@@ -265,6 +263,10 @@ namespace WindowsRepoTool
                 if (File.Exists(sGz))
                 {
                     File.Delete(sGz);
+                }
+                if (File.Exists(sText))
+                {
+                    File.Delete(sText);
                 }
                 if (Directory.Exists(sFolder))
                 {
@@ -277,7 +279,7 @@ namespace WindowsRepoTool
                         client.Headers.Add("X-Machine", "iPhone8,1");
                         client.Headers.Add("X-Unique-ID", "8843d7f92416211de9ebb963ff4ce28125932878");
                         client.Headers.Add("X-Firmware", "13.1");
-                        client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592"); 
+                        client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
                         client.DownloadFile(repoListBox.SelectedItem + "Packages.bz2", "Packages.bz2");
                     }
                     catch (Exception ExOne)
@@ -334,12 +336,30 @@ namespace WindowsRepoTool
                         return;
                     }
 
-                    string lines = File.ReadAllText("test.txt");
+                    Stream stream = File.OpenRead(sPackages);
+                    StreamReader reader = new StreamReader(stream);
+                    string parse;
+                    const string sTath = "Packages.txt";
+                    StreamWriter SaveFile = new StreamWriter(sTath);
+                    while ((parse = reader.ReadLine()) != null)
+                    {
+                        SaveFile.WriteLine(parse.ToString());
+                    }
+                    SaveFile.Close();
+                    reader.Close();
+                    string lines = File.ReadAllText(sText);
                     string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string line in split)
                     {
                         MessageBox.Show(line);
                     }
+                    packagesListBox.Items.Clear();
+                    packagesListBox.Items.Add("Done");
+                    /* packagesListBox.Items.Clear();
+                    for (int i = 0; i < split.Length; i++)
+                    {
+                        packagesListBox.Items.Add(new ListItem { Name = "Test" });
+                    } */
                 }
             }
         }
