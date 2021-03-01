@@ -153,7 +153,7 @@ namespace WindowsRepoTool
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Text = "Windows Repo Tool v1.0.7";
+            this.Text = "Windows Repo Tool v1.0.8 (Beta)";
             this.ResumeLayout(false);
             this.PerformLayout();
 

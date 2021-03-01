@@ -330,7 +330,25 @@ namespace WindowsRepoTool
                         return;
                     }
 
-                    string[] lines = File.ReadAllLines(sPackages);
+                    // const string sRepos = sPackages;
+                    // Stream stream = File.OpenRead(sPackages);
+                    Stream stream = File.OpenRead("test.txt");
+                    StreamReader reader = new StreamReader(stream);
+                    string parse;
+                    while ((parse = reader.ReadLine()) != null)
+                    {
+                        if (parse == String.Empty)
+                        {
+                            MessageBox.Show("Test");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Test1");
+                        }
+                    }
+                    reader.Close();
+
+                    /* string[] lines = File.ReadAllLines(sPackages);
                     foreach (string line in lines)
                     {
                         if (line.StartsWith("Package"))
@@ -403,7 +421,7 @@ namespace WindowsRepoTool
                         }
                         Globals.count = Globals.count + 1;
                     }
-                    packagesListBox.Sorted = true;
+                    packagesListBox.Sorted = true; */
                 }
             }
         }
