@@ -57,13 +57,10 @@ namespace WindowsRepoTool
 
         public static class Globals
         {
-            public static List<string> package = new List<string>();
             public static List<string> name = new List<string>();
             public static List<string> version = new List<string>();
             public static List<string> link = new List<string>();
-            public static List<string> description = new List<string>();
-            public static List<string> author = new List<string>();
-            public static List<string> maintainer = new List<string>();
+            public static List<string> details = new List<string>();
             public static string repo = "";
             public static int count = 0;
             public static int arraycount = 0;
@@ -71,14 +68,10 @@ namespace WindowsRepoTool
 
         public class ListItem
         {
-            public string Package { get; set; }
             public string Name { get; set; }
             public string SingleName { get; set; }
-            public string Version { get; set; }
             public string Link { get; set; }
-            public string Description { get; set; }
-            public string Author { get; set; }
-            public string Maintainer { get; set; }
+            public string Details { get; set; }
 
             public override string ToString()
             {
@@ -242,13 +235,9 @@ namespace WindowsRepoTool
                     reader.Close();
                 }
                 packagesListBox.Items.Add("Opening Repo, Please Wait");
-                Globals.package.Clear(); 
                 Globals.name.Clear();
-                Globals.description.Clear();
-                Globals.version.Clear();
                 Globals.link.Clear();
-                Globals.author.Clear();
-                Globals.maintainer.Clear();
+                Globals.details.Clear();
                 Globals.count = 0;
                 Globals.repo = repoListBox.SelectedItem.ToString();
                 const string sPath = "Packages.bz2";
@@ -351,15 +340,34 @@ namespace WindowsRepoTool
                     string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string line in split)
                     {
-                        MessageBox.Show(line);
+                        Globals.details.Add(line);
+                        string[] check = line.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (string pass in check)
+                        {
+                            if (pass.StartsWith("Name"))
+                            {
+                                string name = pass.Substring(6, pass.Length - 6).ToString();
+                                Globals.name.Add(name);
+                            }
+                            if (line.StartsWith("Version"))
+                            {
+                                string version = pass.Substring(9, pass.Length - 9).ToString();
+                                Globals.version.Add(version);
+                            }
+                            if (pass.StartsWith("Filename"))
+                            {
+                                string link = pass.Substring(10, pass.Length - 10).ToString();
+                                Globals.link.Add(link);
+                            }
+                        }
                     }
                     packagesListBox.Items.Clear();
-                    packagesListBox.Items.Add("Done");
-                    /* packagesListBox.Items.Clear();
-                    for (int i = 0; i < split.Length; i++)
+                    for (int i = 0; i < Globals.name.Count; i++)
                     {
-                        packagesListBox.Items.Add(new ListItem { Name = "Test" });
-                    } */
+                        // packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + Globals.version[i], SingleName = Globals.name[i], Link = Globals.link[i], Details = Globals.details[i] });
+                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[i], Details = Globals.details[i] });
+                    }
+                    packagesListBox.Sorted = true;
                 }
             }
         }
@@ -397,7 +405,7 @@ namespace WindowsRepoTool
                 catch (Exception Ex)
                 {
                     string titleexception = "Notice";
-                    string messageexception = "You can't download paid packages with Windows Repo Tool \n\n" + Ex.ToString();
+                    string messageexception = "You can't download paid packages with Windows Repo Tool";
                     MessageBox.Show(messageexception, titleexception);
                 }
             }
@@ -406,18 +414,14 @@ namespace WindowsRepoTool
         private void packagesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             detailsBox.Clear();
-            string package = ((ListItem)packagesListBox.SelectedItem).Package;
-            string name = ((ListItem)packagesListBox.SelectedItem).SingleName;
-            string version = ((ListItem)packagesListBox.SelectedItem).Version;
-            string author = ((ListItem)packagesListBox.SelectedItem).Author;
-            string maintainer = ((ListItem)packagesListBox.SelectedItem).Maintainer;
-            string description = ((ListItem)packagesListBox.SelectedItem).Description;
-            detailsBox.Text = "ID: " + package + Environment.NewLine + "Name: " + name + Environment.NewLine + "Version: " + version + Environment.NewLine + "Author: " + author + Environment.NewLine + "Maintainer: " + maintainer + Environment.NewLine + "Description: " + description;
+            detailsBox.ScrollBars = ScrollBars.Both;
+            detailsBox.WordWrap = false;
+            detailsBox.Text = ((ListItem)packagesListBox.SelectedItem).Details;
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            packagesListBox.Items.Clear();
+            /* packagesListBox.Items.Clear();
             packagesListBox.Items.Add("Searching, Please Wait");
             Globals.package.Clear();
             Globals.name.Clear();
@@ -509,6 +513,7 @@ namespace WindowsRepoTool
                 Globals.count = Globals.count + 1;
             }
             packagesListBox.Sorted = true;
+            */
         }
 
         private void searchBox_Enter(object sender, EventArgs e)
