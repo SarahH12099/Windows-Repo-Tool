@@ -64,8 +64,12 @@ namespace WindowsRepoTool
             public static List<string> description = new List<string>();
             public static List<string> author = new List<string>();
             public static List<string> maintainer = new List<string>();
+            // public static List<string> test + Globals.count = new List<string>();
             public static string repo = "";
             public static int count = 0;
+            public static int arraycount = 1;
+            public static List<string> test = new List<string>();
+            public static string[] test2 = { };
         }
 
         public class ListItem
@@ -330,98 +334,12 @@ namespace WindowsRepoTool
                         return;
                     }
 
-                    // const string sRepos = sPackages;
-                    // Stream stream = File.OpenRead(sPackages);
-                    Stream stream = File.OpenRead("test.txt");
-                    StreamReader reader = new StreamReader(stream);
-                    string parse;
-                    while ((parse = reader.ReadLine()) != null)
+                    string lines = File.ReadAllText("test.txt");
+                    string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string line in split)
                     {
-                        if (parse == String.Empty)
-                        {
-                            MessageBox.Show("Test");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Test1");
-                        }
+                        MessageBox.Show(line);
                     }
-                    reader.Close();
-
-                    /* string[] lines = File.ReadAllLines(sPackages);
-                    foreach (string line in lines)
-                    {
-                        if (line.StartsWith("Package"))
-                        {
-                            string package = line.Substring(9, line.Length - 9).ToString();
-                            Globals.package.Add(package);
-                        }
-                        if (line.StartsWith("Name"))
-                        {
-                            string name = line.Substring(6, line.Length - 6).ToString();
-                            Globals.name.Add(name);
-                        }
-                        if (line.StartsWith("Description"))
-                        {
-                            string description = line.Substring(13, line.Length - 13).ToString();
-                            Globals.description.Add(description);
-                        }
-                        if (line.StartsWith("Version"))
-                        {
-                            string version = line.Substring(9, line.Length - 9).ToString();
-                            Globals.version.Add(version);
-                        }
-                        if (line.StartsWith("Filename"))
-                        {
-                            string link = line.Substring(10, line.Length - 10).ToString(); 
-                            Globals.link.Add(link);
-                        }
-                        if (line.StartsWith("Author"))
-                        {
-                            string author = line.Substring(8, line.Length - 8).ToString();
-                            Globals.author.Add(author);
-                        }
-                        if (line.StartsWith("Maintainer"))
-                        {
-                            string maintainer = line.Substring(12, line.Length - 12).ToString();
-                            Globals.maintainer.Add(maintainer);
-                        }
-                    }
-                    packagesListBox.Items.Clear();
-                    foreach (string name in Globals.name)
-                    {
-                        try
-                        {
-                            packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count], Author = Globals.author[Globals.count], Maintainer = Globals.maintainer[Globals.count] });
-                        }
-                        catch (Exception ExOne)
-                        {
-                            try
-                            {
-                                packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count], Author = Globals.author[Globals.count] });
-                            }
-                            catch (Exception ExTwo)
-                            {
-                                try
-                                {
-                                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count], Maintainer = Globals.maintainer[Globals.count] });
-                                }
-                                catch (Exception ExThree)
-                                {
-                                    try
-                                    {
-                                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count], Description = Globals.description[Globals.count] });
-                                    }
-                                    catch (Exception ExFour)
-                                    {
-                                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[Globals.count] + " v" + Globals.version[Globals.count], SingleName = Globals.name[Globals.count], Package = Globals.package[Globals.count], Link = Globals.link[Globals.count], Version = Globals.version[Globals.count] });
-                                    }
-                                }
-                            }
-                        }
-                        Globals.count = Globals.count + 1;
-                    }
-                    packagesListBox.Sorted = true; */
                 }
             }
         }
