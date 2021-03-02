@@ -29,6 +29,8 @@ namespace WindowsRepoTool
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.addRepoBtn = new System.Windows.Forms.Button();
             this.addRepoBox = new System.Windows.Forms.TextBox();
             this.repoListBox = new System.Windows.Forms.ListBox();
@@ -39,11 +41,13 @@ namespace WindowsRepoTool
             this.downloadSelectedPackageBtn = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.detailsBox = new System.Windows.Forms.TextBox();
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.programSettingsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addRepoBtn
             // 
-            this.addRepoBtn.Location = new System.Drawing.Point(12, 451);
+            this.addRepoBtn.Location = new System.Drawing.Point(12, 420);
             this.addRepoBtn.Name = "addRepoBtn";
             this.addRepoBtn.Size = new System.Drawing.Size(193, 29);
             this.addRepoBtn.TabIndex = 0;
@@ -53,7 +57,7 @@ namespace WindowsRepoTool
             // 
             // addRepoBox
             // 
-            this.addRepoBox.Location = new System.Drawing.Point(12, 423);
+            this.addRepoBox.Location = new System.Drawing.Point(12, 392);
             this.addRepoBox.Name = "addRepoBox";
             this.addRepoBox.Size = new System.Drawing.Size(193, 22);
             this.addRepoBox.TabIndex = 1;
@@ -64,12 +68,12 @@ namespace WindowsRepoTool
             this.repoListBox.ItemHeight = 16;
             this.repoListBox.Location = new System.Drawing.Point(12, 12);
             this.repoListBox.Name = "repoListBox";
-            this.repoListBox.Size = new System.Drawing.Size(193, 404);
+            this.repoListBox.Size = new System.Drawing.Size(193, 372);
             this.repoListBox.TabIndex = 2;
             // 
             // clearAllReposBtn
             // 
-            this.clearAllReposBtn.Location = new System.Drawing.Point(12, 556);
+            this.clearAllReposBtn.Location = new System.Drawing.Point(12, 525);
             this.clearAllReposBtn.Name = "clearAllReposBtn";
             this.clearAllReposBtn.Size = new System.Drawing.Size(193, 29);
             this.clearAllReposBtn.TabIndex = 3;
@@ -79,7 +83,7 @@ namespace WindowsRepoTool
             // 
             // clearSelectedRepoBtn
             // 
-            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(12, 521);
+            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(12, 490);
             this.clearSelectedRepoBtn.Name = "clearSelectedRepoBtn";
             this.clearSelectedRepoBtn.Size = new System.Drawing.Size(193, 29);
             this.clearSelectedRepoBtn.TabIndex = 4;
@@ -89,7 +93,7 @@ namespace WindowsRepoTool
             // 
             // openSelectedRepoBtn
             // 
-            this.openSelectedRepoBtn.Location = new System.Drawing.Point(12, 486);
+            this.openSelectedRepoBtn.Location = new System.Drawing.Point(12, 455);
             this.openSelectedRepoBtn.Name = "openSelectedRepoBtn";
             this.openSelectedRepoBtn.Size = new System.Drawing.Size(193, 29);
             this.openSelectedRepoBtn.TabIndex = 5;
@@ -109,7 +113,7 @@ namespace WindowsRepoTool
             // 
             // downloadSelectedPackageBtn
             // 
-            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(581, 560);
+            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(581, 563);
             this.downloadSelectedPackageBtn.Name = "downloadSelectedPackageBtn";
             this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(255, 29);
             this.downloadSelectedPackageBtn.TabIndex = 7;
@@ -135,11 +139,27 @@ namespace WindowsRepoTool
             this.detailsBox.Size = new System.Drawing.Size(609, 164);
             this.detailsBox.TabIndex = 10;
             // 
+            // trayIcon
+            // 
+            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Text = "Windows Repo Tool";
+            this.trayIcon.Visible = true;
+            // 
+            // programSettingsButton
+            // 
+            this.programSettingsButton.Location = new System.Drawing.Point(12, 560);
+            this.programSettingsButton.Name = "programSettingsButton";
+            this.programSettingsButton.Size = new System.Drawing.Size(193, 29);
+            this.programSettingsButton.TabIndex = 11;
+            this.programSettingsButton.Text = "Program Settings";
+            this.programSettingsButton.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 601);
+            this.Controls.Add(this.programSettingsButton);
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.downloadSelectedPackageBtn);
@@ -151,6 +171,7 @@ namespace WindowsRepoTool
             this.Controls.Add(this.addRepoBox);
             this.Controls.Add(this.addRepoBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "Windows Repo Tool v1.0.8 (Beta)";
@@ -171,6 +192,8 @@ namespace WindowsRepoTool
         private System.Windows.Forms.Button downloadSelectedPackageBtn;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.TextBox detailsBox;
+        private System.Windows.Forms.NotifyIcon trayIcon;
+        private System.Windows.Forms.Button programSettingsButton;
     }
 }
 
