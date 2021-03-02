@@ -427,7 +427,11 @@ namespace WindowsRepoTool
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             const string sText = "Packages.txt";
-            string lines = File.ReadAllText(sText);
+            string lines = "";
+            if (File.Exists(sText))
+            {
+                lines = File.ReadAllText(sText);
+            }
             string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string line in split)
             {
