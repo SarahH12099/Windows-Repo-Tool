@@ -205,7 +205,10 @@ namespace WindowsRepoTool
             else
             {
                 packagesListBox.Items.Clear();
-                searchBox.Text = "Search Packages";
+                if (searchBox.Text != "Search Packages")
+                {
+                    searchBox.Text = "Search Packages";
+                }
                 detailsBox.Clear();
                 using (var badrepocheck = new WebClient())
                 {
