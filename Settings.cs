@@ -87,6 +87,9 @@ namespace WindowsRepoTool
             if (darkModeOption.Checked)
             {
                 this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                startWithWindowsOption.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                showTrayIconOption.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                darkModeOption.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
                 string[] options = File.ReadAllLines(sSettings);
                 options[3 - 1] = "Dark Mode: True";
                 File.WriteAllLines(sSettings, options);
@@ -94,6 +97,9 @@ namespace WindowsRepoTool
             else
             {
                 this.BackColor = SystemColors.Control;
+                startWithWindowsOption.ForeColor = Color.Black;
+                showTrayIconOption.ForeColor = Color.Black;
+                darkModeOption.ForeColor = Color.Black;
                 string[] options = File.ReadAllLines(sSettings);
                 options[3 - 1] = "Dark Mode: False";
                 File.WriteAllLines(sSettings, options);

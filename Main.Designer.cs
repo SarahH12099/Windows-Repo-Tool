@@ -136,6 +136,8 @@ namespace WindowsRepoTool
             this.detailsBox.Location = new System.Drawing.Point(227, 390);
             this.detailsBox.Multiline = true;
             this.detailsBox.Name = "detailsBox";
+            this.detailsBox.ReadOnly = true;
+            this.detailsBox.ShortcutsEnabled = false;
             this.detailsBox.Size = new System.Drawing.Size(609, 164);
             this.detailsBox.TabIndex = 10;
             // 
@@ -159,7 +161,7 @@ namespace WindowsRepoTool
             // 
             this.searchButton.Location = new System.Drawing.Point(547, 561);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(28, 23);
+            this.searchButton.Size = new System.Drawing.Size(28, 24);
             this.searchButton.TabIndex = 12;
             this.searchButton.Text = "Y";
             this.searchButton.UseVisualStyleBackColor = true;

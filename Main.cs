@@ -64,10 +64,86 @@ namespace WindowsRepoTool
                 if (settingsdarkmodevalue == "True")
                 {
                     this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    repoListBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    repoListBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    packagesListBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    packagesListBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    addRepoBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    addRepoBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    detailsBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    detailsBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    searchBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    searchBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    addRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    addRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    addRepoBtn.FlatStyle = FlatStyle.Flat;
+                    addRepoBtn.FlatAppearance.BorderSize = 1;
+                    clearSelectedRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    clearSelectedRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    clearSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
+                    clearSelectedRepoBtn.FlatAppearance.BorderSize = 1;
+                    clearAllReposBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    clearAllReposBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    clearAllReposBtn.FlatStyle = FlatStyle.Flat;
+                    clearAllReposBtn.FlatAppearance.BorderSize = 1;
+                    settingsButton.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    settingsButton.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    settingsButton.FlatStyle = FlatStyle.Flat;
+                    settingsButton.FlatAppearance.BorderSize = 1;
+                    openSelectedRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    openSelectedRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    openSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
+                    openSelectedRepoBtn.FlatAppearance.BorderSize = 1;
+                    downloadSelectedPackageBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    downloadSelectedPackageBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    downloadSelectedPackageBtn.FlatStyle = FlatStyle.Flat;
+                    downloadSelectedPackageBtn.FlatAppearance.BorderSize = 1;
+                    searchButton.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                    searchButton.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                    searchButton.FlatStyle = FlatStyle.Flat;
+                    searchButton.FlatAppearance.BorderSize = 1;
                 }
                 if (settingsdarkmodevalue == "False")
                 {
                     this.BackColor = SystemColors.Control;
+                    repoListBox.BackColor = SystemColors.Control;
+                    repoListBox.ForeColor = Color.Black;
+                    packagesListBox.BackColor = SystemColors.Control;
+                    packagesListBox.ForeColor = Color.Black;
+                    addRepoBox.BackColor = SystemColors.Control;
+                    addRepoBox.ForeColor = Color.Black;
+                    detailsBox.BackColor = SystemColors.Control;
+                    detailsBox.ForeColor = Color.Black;
+                    searchBox.BackColor = SystemColors.Control;
+                    searchBox.ForeColor = Color.Black;
+                    addRepoBtn.BackColor = SystemColors.Control;
+                    addRepoBtn.ForeColor = Color.Black;
+                    addRepoBtn.FlatStyle = FlatStyle.Flat;
+                    addRepoBtn.FlatAppearance.BorderSize = 1;
+                    clearSelectedRepoBtn.BackColor = SystemColors.Control;
+                    clearSelectedRepoBtn.ForeColor = Color.Black;
+                    clearSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
+                    clearSelectedRepoBtn.FlatAppearance.BorderSize = 1;
+                    clearAllReposBtn.BackColor = SystemColors.Control;
+                    clearAllReposBtn.ForeColor = Color.Black;
+                    clearAllReposBtn.FlatStyle = FlatStyle.Flat;
+                    clearAllReposBtn.FlatAppearance.BorderSize = 1;
+                    settingsButton.BackColor = SystemColors.Control;
+                    settingsButton.ForeColor = Color.Black;
+                    settingsButton.FlatStyle = FlatStyle.Flat;
+                    settingsButton.FlatAppearance.BorderSize = 1;
+                    openSelectedRepoBtn.BackColor = SystemColors.Control;
+                    openSelectedRepoBtn.ForeColor = Color.Black;
+                    openSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
+                    openSelectedRepoBtn.FlatAppearance.BorderSize = 1;
+                    downloadSelectedPackageBtn.BackColor = SystemColors.Control;
+                    downloadSelectedPackageBtn.ForeColor = Color.Black;
+                    downloadSelectedPackageBtn.FlatStyle = FlatStyle.Flat;
+                    downloadSelectedPackageBtn.FlatAppearance.BorderSize = 1;
+                    searchButton.BackColor = SystemColors.Control;
+                    searchButton.ForeColor = Color.Black;
+                    searchButton.FlatStyle = FlatStyle.Flat;
+                    searchButton.FlatAppearance.BorderSize = 1;
                 }
             }
             if (!File.Exists(sPath))
