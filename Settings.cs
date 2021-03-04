@@ -31,9 +31,15 @@ namespace WindowsRepoTool
         {
             const string sSettings = "Settings.txt";
             string[] options = File.ReadAllLines(sSettings);
-            string settingscheck = options[2 - 1];
-            string settingsvalue = settingscheck.Substring(16, settingscheck.Length - 16).ToString();
-            showTrayIconOption.Checked = bool.Parse(settingsvalue);
+            string settingsstartwindowscheck = options[1 - 1];
+            string settingstrayiconcheck = options[2 - 1];
+            string settingsdarkmodecheck = options[3 - 1];
+            string settingsstartwindowsvalue = settingsstartwindowscheck.Substring(20, settingsstartwindowscheck.Length - 20).ToString();
+            string settingstrayiconvalue = settingstrayiconcheck.Substring(16, settingstrayiconcheck.Length - 16).ToString();
+            string settingsdarkmodevalue = settingsdarkmodecheck.Substring(11, settingsdarkmodecheck.Length - 11).ToString();
+            startWithWindowsOption.Checked = bool.Parse(settingsstartwindowsvalue);
+            showTrayIconOption.Checked = bool.Parse(settingstrayiconvalue);
+            darkModeOption.Checked = bool.Parse(settingsdarkmodevalue);
         }
 
         private void startWithWindowsOption_CheckedChanged(object sender, EventArgs e)
@@ -66,6 +72,11 @@ namespace WindowsRepoTool
                 options[2 - 1] = "Show Tray Icon: False";
                 File.WriteAllLines(sSettings, options);
             }
+        }
+
+        private void darkModeOption_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

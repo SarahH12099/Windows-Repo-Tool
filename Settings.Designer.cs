@@ -68,6 +68,7 @@ namespace WindowsRepoTool
             this.darkModeOption.TabIndex = 2;
             this.darkModeOption.Text = "Dark Mode";
             this.darkModeOption.UseVisualStyleBackColor = true;
+            this.darkModeOption.CheckedChanged += new System.EventHandler(this.darkModeOption_CheckedChanged);
             // 
             // Settings
             // 
