@@ -187,6 +187,7 @@ namespace WindowsRepoTool
             this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "Windows Repo Tool v1.0.8 (Beta)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

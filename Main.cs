@@ -22,6 +22,7 @@ namespace WindowsRepoTool
             addRepoBox.Text = "https://";
             searchBox.Text = "Search Packages";
             const string sPath = "Repos.txt";
+            const string sSettings = "Settings.txt";
             const string sText = "Packages.txt";
             const string sDirectory = "Debs";
             const string sPackages = "Packages";
@@ -47,11 +48,25 @@ namespace WindowsRepoTool
             {
                 File.Delete(sText);
             }
+            if (!File.Exists(sSettings))
+            {
+                File.Create(sSettings).Close();
+                File.WriteAllText(sSettings, "Start With Windows: False\nShow Tray Icon: True\nDark Mode: False");
+                string[] options = File.ReadAllLines(sSettings);
+                string settingscheck = options[2 - 1];
+                string settingsvalue = settingscheck.Substring(16, settingscheck.Length - 16).ToString();
+                trayIcon.Visible = bool.Parse(settingsvalue);
+            }
+            else
+            {
+                string[] options = File.ReadAllLines(sSettings);
+                string settingscheck = options[2 - 1];
+                string settingsvalue = settingscheck.Substring(16, settingscheck.Length - 16).ToString();
+                trayIcon.Visible = bool.Parse(settingsvalue);
+            }
             if (!File.Exists(sPath))
             {
                 File.Create(sPath).Close();
-                string[] lines = File.ReadAllLines(sPath);
-                repoListBox.Items.AddRange(lines);
             }
             else
             {
@@ -80,6 +95,11 @@ namespace WindowsRepoTool
             {
                 return Name;
             }
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            trayIcon.Visible = false;
         }
 
         private void addRepoBtn_Click(object sender, EventArgs e)
