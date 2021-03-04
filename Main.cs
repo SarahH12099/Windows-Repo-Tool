@@ -426,48 +426,7 @@ namespace WindowsRepoTool
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            const string sText = "Packages.txt";
-            string lines = "";
-            if (File.Exists(sText))
-            {
-                lines = File.ReadAllText(sText);
-            }
-            string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string line in split)
-            {
-                Globals.details.Add(line);
-                string[] check = line.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string pass in check)
-                {
-                    if (pass.StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        if (pass.StartsWith("Name"))
-                        {
-                            string name = pass.Substring(6, pass.Length - 6).ToString();
-                            Globals.name.Add(name);
-                        }
-                        if (pass.StartsWith("Version"))
-                        {
-                            string version = pass.Substring(9, pass.Length - 9).ToString();
-                            Globals.version.Add(version);
-                        }
-                        if (pass.StartsWith("Filename"))
-                        {
-                            string link = pass.Substring(10, pass.Length - 10).ToString();
-                            Globals.link.Add(link);
-                        }
-                    }
-                }
-            }
-            packagesListBox.Items.Clear();
-            for (int i = 0; i < Globals.name.Count; i++)
-            {
-                if (Globals.name[i].StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
-                }
-            }
-            packagesListBox.Sorted = true;
+            
         }
 
         private void searchBox_Enter(object sender, EventArgs e)
@@ -484,6 +443,49 @@ namespace WindowsRepoTool
             {
                 searchBox.Text = "Search Packages";
             }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            const string sText = "Packages.txt";
+            string lines = "";
+            if (File.Exists(sText))
+            {
+                lines = File.ReadAllText(sText);
+            }
+            string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string line in split)
+            {
+                Globals.details.Add(line);
+                string[] check = line.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string pass in check)
+                {
+                    if (pass.StartsWith("Name"))
+                    {
+                        string name = pass.Substring(6, pass.Length - 6).ToString();
+                        Globals.name.Add(name);
+                    }
+                    if (pass.StartsWith("Version"))
+                    {
+                        string version = pass.Substring(9, pass.Length - 9).ToString();
+                        Globals.version.Add(version);
+                    }
+                    if (pass.StartsWith("Filename"))
+                    {
+                        string link = pass.Substring(10, pass.Length - 10).ToString();
+                        Globals.link.Add(link);
+                    }
+                }
+            }
+            packagesListBox.Items.Clear();
+            for (int i = 0; i < Globals.name.Count; i++)
+            {
+                if (Globals.name[i].StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
+                }
+            }
+            packagesListBox.Sorted = true;
         }
     }
 }
