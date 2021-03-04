@@ -67,6 +67,7 @@ namespace WindowsRepoTool
             public static List<string> link = new List<string>();
             public static List<string> details = new List<string>();
             public static string repo = "";
+            public static NotifyIcon trayProperties;
         }
 
         public class ListItem
@@ -451,6 +452,13 @@ namespace WindowsRepoTool
                 }
             }
             packagesListBox.Sorted = true;
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            Settings form = new Settings();
+            Globals.trayProperties = trayIcon;
+            form.Show();
         }
     }
 }

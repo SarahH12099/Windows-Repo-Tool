@@ -42,7 +42,7 @@ namespace WindowsRepoTool
             this.searchBox = new System.Windows.Forms.TextBox();
             this.detailsBox = new System.Windows.Forms.TextBox();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.programSettingsButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -145,14 +145,15 @@ namespace WindowsRepoTool
             this.trayIcon.Text = "Windows Repo Tool";
             this.trayIcon.Visible = true;
             // 
-            // programSettingsButton
+            // settingsButton
             // 
-            this.programSettingsButton.Location = new System.Drawing.Point(12, 560);
-            this.programSettingsButton.Name = "programSettingsButton";
-            this.programSettingsButton.Size = new System.Drawing.Size(193, 29);
-            this.programSettingsButton.TabIndex = 11;
-            this.programSettingsButton.Text = "Program Settings";
-            this.programSettingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Location = new System.Drawing.Point(12, 560);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(193, 29);
+            this.settingsButton.TabIndex = 11;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // searchButton
             // 
@@ -170,7 +171,7 @@ namespace WindowsRepoTool
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 601);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.programSettingsButton);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.downloadSelectedPackageBtn);
@@ -204,7 +205,7 @@ namespace WindowsRepoTool
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.TextBox detailsBox;
         private System.Windows.Forms.NotifyIcon trayIcon;
-        private System.Windows.Forms.Button programSettingsButton;
+        private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Button searchButton;
     }
 }
