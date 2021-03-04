@@ -128,7 +128,6 @@ namespace WindowsRepoTool
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(313, 22);
             this.searchBox.TabIndex = 8;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
