@@ -478,9 +478,6 @@ namespace WindowsRepoTool
             {
                 if (Globals.name[t].StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    // if (t%2 == 0) {
-                    // packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
-                    // }
                     packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " " + t + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
                 }
                 t = t + 1;
