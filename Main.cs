@@ -442,47 +442,15 @@ namespace WindowsRepoTool
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            const string sText = "Packages.txt";
-            string lines = "";
-            if (File.Exists(sText))
-            {
-                lines = File.ReadAllText(sText);
-            }
-            string[] split = lines.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string line in split)
-            {
-                Globals.details.Add(line);
-                string[] check = line.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string pass in check)
-                {
-                    if (pass.StartsWith("Name"))
-                    {
-                        string name = pass.Substring(6, pass.Length - 6).ToString();
-                        Globals.name.Add(name);
-                    }
-                    if (pass.StartsWith("Version"))
-                    {
-                        string version = pass.Substring(9, pass.Length - 9).ToString();
-                        Globals.version.Add(version);
-                    }
-                    if (pass.StartsWith("Filename"))
-                    {
-                        string link = pass.Substring(10, pass.Length - 10).ToString();
-                        Globals.link.Add(link);
-                    }
-                }
-            }
             packagesListBox.Items.Clear();
-            int t = 0;
             for (int i = 0; i < Globals.name.Count; i++)
             {
-                if (Globals.name[t].StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
+                if (Globals.name[i].StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " " + t + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
+                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
                 }
-                t = t + 1;
             }
-            // packagesListBox.Sorted = true;
+            packagesListBox.Sorted = true;
         }
     }
 }
