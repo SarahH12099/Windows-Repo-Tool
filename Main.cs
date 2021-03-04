@@ -52,25 +52,23 @@ namespace WindowsRepoTool
             {
                 File.Create(sSettings).Close();
                 File.WriteAllText(sSettings, "Start With Windows: False\nShow Tray Icon: True\nDark Mode: False");
-                string[] options = File.ReadAllLines(sSettings);
-                string settingsstartwindowscheck = options[1 - 1];
-                string settingstrayiconcheck = options[2 - 1];
-                string settingsdarkmodecheck = options[3 - 1];
-                string settingsstartwindowsvalue = settingsstartwindowscheck.Substring(20, settingsstartwindowscheck.Length - 20).ToString();
-                string settingstrayiconvalue = settingstrayiconcheck.Substring(16, settingstrayiconcheck.Length - 16).ToString();
-                string settingsdarkmodevalue = settingsdarkmodecheck.Substring(11, settingsdarkmodecheck.Length - 11).ToString();
-                trayIcon.Visible = bool.Parse(settingstrayiconvalue);
             }
             else
             {
                 string[] options = File.ReadAllLines(sSettings);
-                string settingsstartwindowscheck = options[1 - 1];
                 string settingstrayiconcheck = options[2 - 1];
                 string settingsdarkmodecheck = options[3 - 1];
-                string settingsstartwindowsvalue = settingsstartwindowscheck.Substring(20, settingsstartwindowscheck.Length - 20).ToString();
                 string settingstrayiconvalue = settingstrayiconcheck.Substring(16, settingstrayiconcheck.Length - 16).ToString();
                 string settingsdarkmodevalue = settingsdarkmodecheck.Substring(11, settingsdarkmodecheck.Length - 11).ToString();
                 trayIcon.Visible = bool.Parse(settingstrayiconvalue);
+                if (settingsdarkmodevalue == "True")
+                {
+                    this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                }
+                if (settingsdarkmodevalue == "False")
+                {
+                    this.BackColor = SystemColors.Control;
+                }
             }
             if (!File.Exists(sPath))
             {

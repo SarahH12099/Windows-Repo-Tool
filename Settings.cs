@@ -44,14 +44,21 @@ namespace WindowsRepoTool
 
         private void startWithWindowsOption_CheckedChanged(object sender, EventArgs e)
         {
+            const string sSettings = "Settings.txt";
             RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             if (startWithWindowsOption.Checked)
             {
                 rk.SetValue("WindowsRepoTool", Application.ExecutablePath);
+                string[] options = File.ReadAllLines(sSettings);
+                options[1 - 1] = "Start With Windows: True";
+                File.WriteAllLines(sSettings, options);
             }
             else
             {
                 rk.DeleteValue("WindowsRepoTool", false);
+                string[] options = File.ReadAllLines(sSettings);
+                options[1 - 1] = "Start With Windows: False";
+                File.WriteAllLines(sSettings, options);
             }
         }
 
@@ -76,7 +83,21 @@ namespace WindowsRepoTool
 
         private void darkModeOption_CheckedChanged(object sender, EventArgs e)
         {
-
+            const string sSettings = "Settings.txt";
+            if (darkModeOption.Checked)
+            {
+                this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                string[] options = File.ReadAllLines(sSettings);
+                options[3 - 1] = "Dark Mode: True";
+                File.WriteAllLines(sSettings, options);
+            }
+            else
+            {
+                this.BackColor = SystemColors.Control;
+                string[] options = File.ReadAllLines(sSettings);
+                options[3 - 1] = "Dark Mode: False";
+                File.WriteAllLines(sSettings, options);
+            }
         }
     }
 }
