@@ -126,7 +126,6 @@ namespace WindowsRepoTool
             // 
             this.searchBox.Location = new System.Drawing.Point(227, 563);
             this.searchBox.Name = "searchBox";
-            this.searchBox.AutoSize = false;
             this.searchBox.Size = new System.Drawing.Size(313, 29);
             this.searchBox.TabIndex = 8;
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
@@ -189,7 +188,7 @@ namespace WindowsRepoTool
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Text = "Windows Repo Tool v1.0.8 (Beta)";
+            this.Text = "Windows Repo Tool v1.0.8";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

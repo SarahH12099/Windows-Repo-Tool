@@ -96,10 +96,10 @@ namespace WindowsRepoTool
             }
             else
             {
-                this.BackColor = SystemColors.Control;
-                startWithWindowsOption.ForeColor = Color.Black;
-                showTrayIconOption.ForeColor = Color.Black;
-                darkModeOption.ForeColor = Color.Black;
+                this.BackColor = default(Color);
+                startWithWindowsOption.ForeColor = default(Color);
+                showTrayIconOption.ForeColor = default(Color);
+                darkModeOption.ForeColor = default(Color);
                 string[] options = File.ReadAllLines(sSettings);
                 options[3 - 1] = "Dark Mode: False";
                 File.WriteAllLines(sSettings, options);
