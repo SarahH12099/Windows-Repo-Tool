@@ -51,16 +51,13 @@ namespace WindowsRepoTool
             if (!File.Exists(sSettings))
             {
                 File.Create(sSettings).Close();
-                File.WriteAllText(sSettings, "Start With Windows: False\nShow Tray Icon: True\nDark Mode: False");
+                File.WriteAllText(sSettings, "Dark Mode: False");
             }
             else
             {
                 string[] options = File.ReadAllLines(sSettings);
-                string settingstrayiconcheck = options[2 - 1];
-                string settingsdarkmodecheck = options[3 - 1];
-                string settingstrayiconvalue = settingstrayiconcheck.Substring(16, settingstrayiconcheck.Length - 16).ToString();
+                string settingsdarkmodecheck = options[1 - 1];
                 string settingsdarkmodevalue = settingsdarkmodecheck.Substring(11, settingsdarkmodecheck.Length - 11).ToString();
-                trayIcon.Visible = bool.Parse(settingstrayiconvalue);
                 if (settingsdarkmodevalue == "True")
                 {
                     this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
@@ -86,10 +83,6 @@ namespace WindowsRepoTool
                     clearAllReposBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
                     clearAllReposBtn.FlatStyle = FlatStyle.Flat;
                     clearAllReposBtn.FlatAppearance.BorderSize = 1;
-                    settingsButton.BackColor = ColorTranslator.FromHtml("#2d2d2d");
-                    settingsButton.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
-                    settingsButton.FlatStyle = FlatStyle.Flat;
-                    settingsButton.FlatAppearance.BorderSize = 1;
                     openSelectedRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
                     openSelectedRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
                     openSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
@@ -146,7 +139,7 @@ namespace WindowsRepoTool
         {
             string repo = addRepoBox.Text.ToLower();
             string finalrepo;
-            
+
             if (repo.EndsWith("/"))
             {
                 finalrepo = repo;
@@ -155,7 +148,7 @@ namespace WindowsRepoTool
             {
                 finalrepo = repo + "/";
             }
-            
+
             if (!repoListBox.Items.Contains(finalrepo))
             {
                 if (addRepoBox.Text != "https://" & addRepoBox.Text != "http://" & addRepoBox.Text != String.Empty)
@@ -163,7 +156,8 @@ namespace WindowsRepoTool
                     repoListBox.Items.Add(finalrepo);
                     const string sPath = "Repos.txt";
                     StreamWriter SaveFile = new StreamWriter(sPath);
-                    foreach (var item in repoListBox.Items) {
+                    foreach (var item in repoListBox.Items)
+                    {
                         SaveFile.WriteLine(item.ToString());
                     }
                     SaveFile.Close();
@@ -276,7 +270,7 @@ namespace WindowsRepoTool
                     const string sRepos = "https://sarahh12099.github.io/files/badrepos.txt";
                     Stream stream = badrepocheck.OpenRead(sRepos);
                     StreamReader reader = new StreamReader(stream);
-                    string check; 
+                    string check;
                     while ((check = reader.ReadLine()) != null)
                     {
                         if (check == repoListBox.SelectedItem.ToString())
@@ -514,11 +508,25 @@ namespace WindowsRepoTool
             packagesListBox.Sorted = true;
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void darkModeBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Settings form = new Settings();
-            Globals.trayProperties = trayIcon;
-            form.Show();
+            const string sSettings = "Settings.txt";
+            if (darkModeBtn.Checked)
+            {
+                this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                darkModeBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                string[] options = File.ReadAllLines(sSettings);
+                options[1 - 1] = "Dark Mode: True";
+                File.WriteAllLines(sSettings, options);
+            }
+            else
+            {
+                this.BackColor = default(Color);
+                darkModeBtn.ForeColor = default(Color);
+                string[] options = File.ReadAllLines(sSettings);
+                options[1 - 1] = "Dark Mode: False";
+                File.WriteAllLines(sSettings, options);
+            }
         }
     }
 }

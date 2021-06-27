@@ -30,7 +30,6 @@ namespace WindowsRepoTool
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.addRepoBtn = new System.Windows.Forms.Button();
             this.addRepoBox = new System.Windows.Forms.TextBox();
             this.repoListBox = new System.Windows.Forms.ListBox();
@@ -42,8 +41,8 @@ namespace WindowsRepoTool
             this.searchBox = new System.Windows.Forms.TextBox();
             this.detailsBox = new System.Windows.Forms.TextBox();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.settingsButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
+            this.darkModeBtn = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // addRepoBtn
@@ -126,7 +125,7 @@ namespace WindowsRepoTool
             // 
             this.searchBox.Location = new System.Drawing.Point(227, 563);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(313, 29);
+            this.searchBox.Size = new System.Drawing.Size(313, 22);
             this.searchBox.TabIndex = 8;
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
@@ -143,19 +142,8 @@ namespace WindowsRepoTool
             // 
             // trayIcon
             // 
-            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
             this.trayIcon.Text = "Windows Repo Tool";
             this.trayIcon.Visible = true;
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.Location = new System.Drawing.Point(12, 560);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(193, 29);
-            this.settingsButton.TabIndex = 11;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // searchButton
             // 
@@ -167,13 +155,24 @@ namespace WindowsRepoTool
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // darkModeBtn
+            // 
+            this.darkModeBtn.AutoSize = true;
+            this.darkModeBtn.Location = new System.Drawing.Point(12, 563);
+            this.darkModeBtn.Name = "darkModeBtn";
+            this.darkModeBtn.Size = new System.Drawing.Size(99, 21);
+            this.darkModeBtn.TabIndex = 13;
+            this.darkModeBtn.Text = "Dark Mode";
+            this.darkModeBtn.UseVisualStyleBackColor = true;
+            this.darkModeBtn.CheckedChanged += new System.EventHandler(this.darkModeBtn_CheckedChanged);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 601);
+            this.Controls.Add(this.darkModeBtn);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.downloadSelectedPackageBtn);
@@ -185,10 +184,9 @@ namespace WindowsRepoTool
             this.Controls.Add(this.addRepoBox);
             this.Controls.Add(this.addRepoBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Text = "Windows Repo Tool v1.0.8";
+            this.Text = "Windows Repo Tool v2.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -208,8 +206,7 @@ namespace WindowsRepoTool
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.TextBox detailsBox;
         private System.Windows.Forms.NotifyIcon trayIcon;
-        private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.CheckBox darkModeBtn;
     }
 }
-
