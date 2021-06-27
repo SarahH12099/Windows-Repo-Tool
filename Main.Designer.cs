@@ -40,7 +40,6 @@ namespace WindowsRepoTool
             this.downloadSelectedPackageBtn = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.detailsBox = new System.Windows.Forms.TextBox();
-            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.searchButton = new System.Windows.Forms.Button();
             this.darkModeBtn = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -140,11 +139,6 @@ namespace WindowsRepoTool
             this.detailsBox.Size = new System.Drawing.Size(609, 164);
             this.detailsBox.TabIndex = 10;
             // 
-            // trayIcon
-            // 
-            this.trayIcon.Text = "Windows Repo Tool";
-            this.trayIcon.Visible = true;
-            // 
             // searchButton
             // 
             this.searchButton.Location = new System.Drawing.Point(547, 563);
@@ -205,7 +199,6 @@ namespace WindowsRepoTool
         private System.Windows.Forms.Button downloadSelectedPackageBtn;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.TextBox detailsBox;
-        private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.CheckBox darkModeBtn;
     }

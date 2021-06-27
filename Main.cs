@@ -60,6 +60,7 @@ namespace WindowsRepoTool
                 string settingsdarkmodevalue = settingsdarkmodecheck.Substring(11, settingsdarkmodecheck.Length - 11).ToString();
                 if (settingsdarkmodevalue == "True")
                 {
+                    darkModeBtn.Checked = bool.Parse(settingsdarkmodevalue); 
                     this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
                     repoListBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
                     repoListBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
@@ -95,6 +96,7 @@ namespace WindowsRepoTool
                     searchButton.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
                     searchButton.FlatStyle = FlatStyle.Flat;
                     searchButton.FlatAppearance.BorderSize = 1;
+                    darkModeBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
                 }
             }
             if (!File.Exists(sPath))
@@ -115,7 +117,6 @@ namespace WindowsRepoTool
             public static List<string> link = new List<string>();
             public static List<string> details = new List<string>();
             public static string repo = "";
-            public static NotifyIcon trayProperties;
         }
 
         public class ListItem
@@ -132,7 +133,7 @@ namespace WindowsRepoTool
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            trayIcon.Visible = false;
+            // trayIcon.Visible = false;
         }
 
         private void addRepoBtn_Click(object sender, EventArgs e)
@@ -514,6 +515,40 @@ namespace WindowsRepoTool
             if (darkModeBtn.Checked)
             {
                 this.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                repoListBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                repoListBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                packagesListBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                packagesListBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                addRepoBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                addRepoBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                detailsBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                detailsBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                searchBox.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                searchBox.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                addRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                addRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                addRepoBtn.FlatStyle = FlatStyle.Flat;
+                addRepoBtn.FlatAppearance.BorderSize = 1;
+                clearSelectedRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                clearSelectedRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                clearSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
+                clearSelectedRepoBtn.FlatAppearance.BorderSize = 1;
+                clearAllReposBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                clearAllReposBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                clearAllReposBtn.FlatStyle = FlatStyle.Flat;
+                clearAllReposBtn.FlatAppearance.BorderSize = 1;
+                openSelectedRepoBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                openSelectedRepoBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                openSelectedRepoBtn.FlatStyle = FlatStyle.Flat;
+                openSelectedRepoBtn.FlatAppearance.BorderSize = 1;
+                downloadSelectedPackageBtn.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                downloadSelectedPackageBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                downloadSelectedPackageBtn.FlatStyle = FlatStyle.Flat;
+                downloadSelectedPackageBtn.FlatAppearance.BorderSize = 1;
+                searchButton.BackColor = ColorTranslator.FromHtml("#2d2d2d");
+                searchButton.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
+                searchButton.FlatStyle = FlatStyle.Flat;
+                searchButton.FlatAppearance.BorderSize = 1;
                 darkModeBtn.ForeColor = ColorTranslator.FromHtml("#dfdfdf");
                 string[] options = File.ReadAllLines(sSettings);
                 options[1 - 1] = "Dark Mode: True";
@@ -522,6 +557,28 @@ namespace WindowsRepoTool
             else
             {
                 this.BackColor = default(Color);
+                repoListBox.BackColor = default(Color);
+                repoListBox.ForeColor = default(Color);
+                packagesListBox.BackColor = default(Color);
+                packagesListBox.ForeColor = default(Color);
+                addRepoBox.BackColor = default(Color);
+                addRepoBox.ForeColor = default(Color);
+                detailsBox.BackColor = default(Color);
+                detailsBox.ForeColor = default(Color);
+                searchBox.BackColor = default(Color);
+                searchBox.ForeColor = default(Color);
+                addRepoBtn.BackColor = default(Color);
+                addRepoBtn.ForeColor = default(Color);
+                clearSelectedRepoBtn.BackColor = default(Color);
+                clearSelectedRepoBtn.ForeColor = default(Color);
+                clearAllReposBtn.BackColor = default(Color);
+                clearAllReposBtn.ForeColor = default(Color);
+                openSelectedRepoBtn.BackColor = default(Color);
+                openSelectedRepoBtn.ForeColor = default(Color);
+                downloadSelectedPackageBtn.BackColor = default(Color);
+                downloadSelectedPackageBtn.ForeColor = default(Color);
+                searchButton.BackColor = default(Color);
+                searchButton.ForeColor = default(Color);
                 darkModeBtn.ForeColor = default(Color);
                 string[] options = File.ReadAllLines(sSettings);
                 options[1 - 1] = "Dark Mode: False";
