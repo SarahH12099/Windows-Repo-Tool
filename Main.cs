@@ -116,6 +116,7 @@ namespace WindowsRepoTool
             public static List<string> version = new List<string>();
             public static List<string> link = new List<string>();
             public static List<string> details = new List<string>();
+            public static List<string> package = new List<string>();
             public static string repo = "";
         }
 
@@ -125,6 +126,10 @@ namespace WindowsRepoTool
             public string Link { get; set; }
             public string Details { get; set; }
 
+            public string Package { get; set; }
+
+            public string Version { get; set; }
+
             public override string ToString()
             {
                 return Name;
@@ -133,7 +138,26 @@ namespace WindowsRepoTool
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // trayIcon.Visible = false;
+            const string sText = "Packages.txt";
+            const string sPackages = "Packages";
+            const string sDownloads = "Packages.bz2";
+            const string sGz = "Packages.gz";
+            if (Directory.Exists(sPackages))
+            {
+                Directory.Delete(sPackages, true);
+            }
+            if (File.Exists(sDownloads))
+            {
+                File.Delete(sDownloads);
+            }
+            if (File.Exists(sGz))
+            {
+                File.Delete(sGz);
+            }
+            if (File.Exists(sText))
+            {
+                File.Delete(sText);
+            }
         }
 
         private void addRepoBtn_Click(object sender, EventArgs e)
@@ -421,12 +445,17 @@ namespace WindowsRepoTool
                                 string link = pass.Substring(10, pass.Length - 10).ToString();
                                 Globals.link.Add(link);
                             }
+                            if (pass.StartsWith("Package"))
+                            {
+                                string link = pass.Substring(9, pass.Length - 9).ToString();
+                                Globals.package.Add(link);
+                            }
                         }
                     }
                     packagesListBox.Items.Clear();
                     for (int i = 0; i < Globals.name.Count; i++)
                     {
-                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
+                        packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i], Package = Globals.package[i], Version = Globals.version[i] });
                     }
                     packagesListBox.Sorted = true;
                 }
@@ -442,7 +471,7 @@ namespace WindowsRepoTool
                 MessageBox.Show(messagefinal, titlefinal);
                 return;
             }
-            string selectedPackageItem = packagesListBox.SelectedItem.ToString();
+            string selectedPackageItem = ((ListItem)packagesListBox.SelectedItem).Package + "_" + ((ListItem)packagesListBox.SelectedItem).Version;
             string repoURL = Globals.repo;
             string packageURL = ((ListItem)packagesListBox.SelectedItem).Link;
             string downloadURL = repoURL + packageURL;
@@ -503,7 +532,7 @@ namespace WindowsRepoTool
             {
                 if (Globals.name[i].StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i] });
+                    packagesListBox.Items.Add(new ListItem { Name = Globals.name[i] + " v" + Globals.version[i], Link = Globals.link[i], Details = Globals.details[i], Package = Globals.package[i], Version = Globals.version[i] });
                 }
             }
             packagesListBox.Sorted = true;
