@@ -327,6 +327,7 @@ namespace WindowsRepoTool
 				string repo = Main.Globals.repo;
 				string packageURL = ((Main.ListItem)package).Link;
 				string downloadURL = repo + packageURL;
+				logToWrite.Add("downloading " + selectedPackageItem + " from " + downloadURL);
 				using (WebClient client = new WebClient())
 				{
 					if (!Directory.Exists("Debs"))
@@ -356,6 +357,7 @@ namespace WindowsRepoTool
 				SaveFile.WriteLine(s);
 			}
 			SaveFile.Close();
+			Application.Restart();
 		}
 		private void packagesListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
