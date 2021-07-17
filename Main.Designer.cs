@@ -1,35 +1,21 @@
-﻿
-namespace WindowsRepoTool
+﻿namespace WindowsRepoTool
 {
-    partial class Main
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	// Token: 0x02000002 RID: 2
+	public partial class Main : global::System.Windows.Forms.Form
+	{
+		// Token: 0x0600000D RID: 13 RVA: 0x0000368A File Offset: 0x0000188A
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && this.components != null)
+			{
+				this.components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.components = new System.ComponentModel.Container();
+		// Token: 0x0600000E RID: 14 RVA: 0x000036AC File Offset: 0x000018AC
+		private void InitializeComponent()
+		{
             this.addRepoBtn = new System.Windows.Forms.Button();
             this.addRepoBox = new System.Windows.Forms.TextBox();
             this.repoListBox = new System.Windows.Forms.ListBox();
@@ -41,14 +27,20 @@ namespace WindowsRepoTool
             this.searchBox = new System.Windows.Forms.TextBox();
             this.detailsBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.darkModeBtn = new System.Windows.Forms.CheckBox();
+            this.queueListBox = new System.Windows.Forms.ListBox();
+            this.removeFromQueueBtn = new System.Windows.Forms.Button();
+            this.removeAllFromQueueBtn = new System.Windows.Forms.Button();
+            this.addToQueueBtn = new System.Windows.Forms.Button();
+            this.addAllToQueueBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addRepoBtn
             // 
-            this.addRepoBtn.Location = new System.Drawing.Point(12, 420);
+            this.addRepoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addRepoBtn.Location = new System.Drawing.Point(9, 373);
+            this.addRepoBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addRepoBtn.Name = "addRepoBtn";
-            this.addRepoBtn.Size = new System.Drawing.Size(193, 29);
+            this.addRepoBtn.Size = new System.Drawing.Size(191, 24);
             this.addRepoBtn.TabIndex = 0;
             this.addRepoBtn.Text = "Add Repo";
             this.addRepoBtn.UseVisualStyleBackColor = true;
@@ -56,25 +48,31 @@ namespace WindowsRepoTool
             // 
             // addRepoBox
             // 
-            this.addRepoBox.Location = new System.Drawing.Point(12, 392);
+            this.addRepoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addRepoBox.Location = new System.Drawing.Point(9, 349);
+            this.addRepoBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addRepoBox.Name = "addRepoBox";
-            this.addRepoBox.Size = new System.Drawing.Size(193, 22);
+            this.addRepoBox.Size = new System.Drawing.Size(191, 20);
             this.addRepoBox.TabIndex = 1;
             // 
             // repoListBox
             // 
+            this.repoListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.repoListBox.FormattingEnabled = true;
-            this.repoListBox.ItemHeight = 16;
-            this.repoListBox.Location = new System.Drawing.Point(12, 12);
+            this.repoListBox.Location = new System.Drawing.Point(9, 10);
+            this.repoListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.repoListBox.Name = "repoListBox";
-            this.repoListBox.Size = new System.Drawing.Size(193, 372);
+            this.repoListBox.Size = new System.Drawing.Size(191, 329);
             this.repoListBox.TabIndex = 2;
             // 
             // clearAllReposBtn
             // 
-            this.clearAllReposBtn.Location = new System.Drawing.Point(12, 525);
+            this.clearAllReposBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.clearAllReposBtn.Location = new System.Drawing.Point(9, 457);
+            this.clearAllReposBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.clearAllReposBtn.Name = "clearAllReposBtn";
-            this.clearAllReposBtn.Size = new System.Drawing.Size(193, 29);
+            this.clearAllReposBtn.Size = new System.Drawing.Size(191, 24);
             this.clearAllReposBtn.TabIndex = 3;
             this.clearAllReposBtn.Text = "Remove All Repos";
             this.clearAllReposBtn.UseVisualStyleBackColor = true;
@@ -82,9 +80,11 @@ namespace WindowsRepoTool
             // 
             // clearSelectedRepoBtn
             // 
-            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(12, 490);
+            this.clearSelectedRepoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(9, 429);
+            this.clearSelectedRepoBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.clearSelectedRepoBtn.Name = "clearSelectedRepoBtn";
-            this.clearSelectedRepoBtn.Size = new System.Drawing.Size(193, 29);
+            this.clearSelectedRepoBtn.Size = new System.Drawing.Size(191, 24);
             this.clearSelectedRepoBtn.TabIndex = 4;
             this.clearSelectedRepoBtn.Text = "Remove Selected Repo";
             this.clearSelectedRepoBtn.UseVisualStyleBackColor = true;
@@ -92,9 +92,11 @@ namespace WindowsRepoTool
             // 
             // openSelectedRepoBtn
             // 
-            this.openSelectedRepoBtn.Location = new System.Drawing.Point(12, 455);
+            this.openSelectedRepoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.openSelectedRepoBtn.Location = new System.Drawing.Point(9, 401);
+            this.openSelectedRepoBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openSelectedRepoBtn.Name = "openSelectedRepoBtn";
-            this.openSelectedRepoBtn.Size = new System.Drawing.Size(193, 29);
+            this.openSelectedRepoBtn.Size = new System.Drawing.Size(191, 24);
             this.openSelectedRepoBtn.TabIndex = 5;
             this.openSelectedRepoBtn.Text = "Open Selected Repo";
             this.openSelectedRepoBtn.UseVisualStyleBackColor = true;
@@ -102,70 +104,129 @@ namespace WindowsRepoTool
             // 
             // packagesListBox
             // 
+            this.packagesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.packagesListBox.FormattingEnabled = true;
-            this.packagesListBox.ItemHeight = 16;
-            this.packagesListBox.Location = new System.Drawing.Point(227, 12);
+            this.packagesListBox.Location = new System.Drawing.Point(204, 10);
+            this.packagesListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.packagesListBox.Name = "packagesListBox";
-            this.packagesListBox.Size = new System.Drawing.Size(609, 372);
+            this.packagesListBox.Size = new System.Drawing.Size(425, 303);
             this.packagesListBox.TabIndex = 6;
             this.packagesListBox.SelectedIndexChanged += new System.EventHandler(this.packagesListBox_SelectedIndexChanged);
             // 
             // downloadSelectedPackageBtn
             // 
-            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(581, 563);
+            this.downloadSelectedPackageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(633, 457);
+            this.downloadSelectedPackageBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.downloadSelectedPackageBtn.Name = "downloadSelectedPackageBtn";
-            this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(255, 29);
+            this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(200, 24);
             this.downloadSelectedPackageBtn.TabIndex = 7;
-            this.downloadSelectedPackageBtn.Text = "Download Selected Package";
+            this.downloadSelectedPackageBtn.Text = "Download Selected Packages";
             this.downloadSelectedPackageBtn.UseVisualStyleBackColor = true;
             this.downloadSelectedPackageBtn.Click += new System.EventHandler(this.downloadSelectedPackageBtn_Click);
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(227, 563);
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBox.Location = new System.Drawing.Point(204, 460);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(313, 22);
+            this.searchBox.Size = new System.Drawing.Size(193, 20);
             this.searchBox.TabIndex = 8;
             this.searchBox.Enter += new System.EventHandler(this.searchBox_Enter);
             this.searchBox.Leave += new System.EventHandler(this.searchBox_Leave);
             // 
             // detailsBox
             // 
-            this.detailsBox.Location = new System.Drawing.Point(227, 390);
+            this.detailsBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.detailsBox.Location = new System.Drawing.Point(204, 317);
+            this.detailsBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.detailsBox.Multiline = true;
             this.detailsBox.Name = "detailsBox";
             this.detailsBox.ReadOnly = true;
             this.detailsBox.ShortcutsEnabled = false;
-            this.detailsBox.Size = new System.Drawing.Size(609, 164);
+            this.detailsBox.Size = new System.Drawing.Size(424, 134);
             this.detailsBox.TabIndex = 10;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(547, 563);
+            this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchButton.Location = new System.Drawing.Point(401, 458);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(28, 29);
+            this.searchButton.Size = new System.Drawing.Size(21, 23);
             this.searchButton.TabIndex = 12;
-            this.searchButton.Text = "Y";
+            this.searchButton.Text = "";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // darkModeBtn
+            // queueListBox
             // 
-            this.darkModeBtn.AutoSize = true;
-            this.darkModeBtn.Location = new System.Drawing.Point(12, 563);
-            this.darkModeBtn.Name = "darkModeBtn";
-            this.darkModeBtn.Size = new System.Drawing.Size(99, 21);
-            this.darkModeBtn.TabIndex = 13;
-            this.darkModeBtn.Text = "Dark Mode";
-            this.darkModeBtn.UseVisualStyleBackColor = true;
-            this.darkModeBtn.CheckedChanged += new System.EventHandler(this.darkModeBtn_CheckedChanged);
+            this.queueListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.queueListBox.FormattingEnabled = true;
+            this.queueListBox.Location = new System.Drawing.Point(633, 10);
+            this.queueListBox.Name = "queueListBox";
+            this.queueListBox.Size = new System.Drawing.Size(200, 381);
+            this.queueListBox.TabIndex = 14;
+            // 
+            // removeFromQueueBtn
+            // 
+            this.removeFromQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeFromQueueBtn.Location = new System.Drawing.Point(633, 429);
+            this.removeFromQueueBtn.Name = "removeFromQueueBtn";
+            this.removeFromQueueBtn.Size = new System.Drawing.Size(200, 23);
+            this.removeFromQueueBtn.TabIndex = 15;
+            this.removeFromQueueBtn.Text = "Remove Selected Package";
+            this.removeFromQueueBtn.UseVisualStyleBackColor = true;
+            this.removeFromQueueBtn.Click += new System.EventHandler(this.removeFromQueueBtn_Click);
+            // 
+            // removeAllFromQueueBtn
+            // 
+            this.removeAllFromQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeAllFromQueueBtn.Location = new System.Drawing.Point(633, 400);
+            this.removeAllFromQueueBtn.Name = "removeAllFromQueueBtn";
+            this.removeAllFromQueueBtn.Size = new System.Drawing.Size(200, 23);
+            this.removeAllFromQueueBtn.TabIndex = 16;
+            this.removeAllFromQueueBtn.Text = "Remove All Packages";
+            this.removeAllFromQueueBtn.UseVisualStyleBackColor = true;
+            this.removeAllFromQueueBtn.Click += new System.EventHandler(this.removeAllFromQueueBtn_Click);
+            // 
+            // addToQueueBtn
+            // 
+            this.addToQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addToQueueBtn.Location = new System.Drawing.Point(533, 458);
+            this.addToQueueBtn.Name = "addToQueueBtn";
+            this.addToQueueBtn.Size = new System.Drawing.Size(96, 23);
+            this.addToQueueBtn.TabIndex = 17;
+            this.addToQueueBtn.Text = "Add to queue";
+            this.addToQueueBtn.UseVisualStyleBackColor = true;
+            this.addToQueueBtn.Click += new System.EventHandler(this.addToQueueBtn_Click);
+            // 
+            // addAllToQueueBtn
+            // 
+            this.addAllToQueueBtn.Location = new System.Drawing.Point(427, 458);
+            this.addAllToQueueBtn.Name = "addAllToQueueBtn";
+            this.addAllToQueueBtn.Size = new System.Drawing.Size(100, 23);
+            this.addAllToQueueBtn.TabIndex = 18;
+            this.addAllToQueueBtn.Text = "Add all to queue";
+            this.addAllToQueueBtn.UseVisualStyleBackColor = true;
+            this.addAllToQueueBtn.Click += new System.EventHandler(this.addAllToQueueBtn_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 601);
-            this.Controls.Add(this.darkModeBtn);
+            this.ClientSize = new System.Drawing.Size(845, 488);
+            this.Controls.Add(this.addAllToQueueBtn);
+            this.Controls.Add(this.addToQueueBtn);
+            this.Controls.Add(this.removeAllFromQueueBtn);
+            this.Controls.Add(this.removeFromQueueBtn);
+            this.Controls.Add(this.queueListBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.searchBox);
@@ -178,28 +239,55 @@ namespace WindowsRepoTool
             this.Controls.Add(this.addRepoBox);
             this.Controls.Add(this.addRepoBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main";
             this.Text = "Windows Repo Tool v2.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		// Token: 0x04000001 RID: 1
+		private global::System.ComponentModel.IContainer components;
 
-        private System.Windows.Forms.Button addRepoBtn;
-        private System.Windows.Forms.TextBox addRepoBox;
-        private System.Windows.Forms.ListBox repoListBox;
-        private System.Windows.Forms.Button clearAllReposBtn;
-        private System.Windows.Forms.Button clearSelectedRepoBtn;
-        private System.Windows.Forms.Button openSelectedRepoBtn;
-        private System.Windows.Forms.ListBox packagesListBox;
-        private System.Windows.Forms.Button downloadSelectedPackageBtn;
-        private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.TextBox detailsBox;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.CheckBox darkModeBtn;
+		// Token: 0x04000002 RID: 2
+		private global::System.Windows.Forms.Button addRepoBtn;
+
+		// Token: 0x04000003 RID: 3
+		private global::System.Windows.Forms.TextBox addRepoBox;
+
+		// Token: 0x04000004 RID: 4
+		private global::System.Windows.Forms.ListBox repoListBox;
+
+		// Token: 0x04000005 RID: 5
+		private global::System.Windows.Forms.Button clearAllReposBtn;
+
+		// Token: 0x04000006 RID: 6
+		private global::System.Windows.Forms.Button clearSelectedRepoBtn;
+
+		// Token: 0x04000007 RID: 7
+		private global::System.Windows.Forms.Button openSelectedRepoBtn;
+
+		// Token: 0x04000008 RID: 8
+		private global::System.Windows.Forms.ListBox packagesListBox;
+
+		// Token: 0x04000009 RID: 9
+		private global::System.Windows.Forms.Button downloadSelectedPackageBtn;
+
+		// Token: 0x0400000A RID: 10
+		private global::System.Windows.Forms.TextBox searchBox;
+
+		// Token: 0x0400000B RID: 11
+		private global::System.Windows.Forms.TextBox detailsBox;
+
+		// Token: 0x0400000C RID: 12
+		private global::System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.ListBox queueListBox;
+        private System.Windows.Forms.Button removeFromQueueBtn;
+        private System.Windows.Forms.Button removeAllFromQueueBtn;
+        private System.Windows.Forms.Button addToQueueBtn;
+        private System.Windows.Forms.Button addAllToQueueBtn;
     }
 }
