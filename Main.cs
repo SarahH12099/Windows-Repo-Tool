@@ -311,7 +311,7 @@ namespace WindowsRepoTool
 				}
 				this.packagesListBox.Sorted = true;
 			}
-		}
+        }
 		private void downloadSelectedPackageBtn_Click(object sender, EventArgs e)
 		{
 			if (this.queueListBox.Items == null)
@@ -341,16 +341,23 @@ namespace WindowsRepoTool
 						client.Headers.Add("X-Firmware", "13.1");
 						client.Headers.Add("User-Agent", "Telesphoreo APT-HTTP/1.0.592");
 						client.DownloadFile(downloadURL, "Debs/" + selectedPackageItem + ".deb");
-						logToWrite.Add(package.Name + " successfully downloaded");
+						string toLog = package.Name + " successfully downloaded";
+						logToWrite.Add(toLog);
+						logBox.AppendText(toLog);
+						logBox.AppendText(Environment.NewLine);
 					}
 					catch (Exception)
 					{
-						logToWrite.Add(package.Name + " failed to download (paid?)");
+						string toLog = package.Name + " failed to download (paid?)";
+						logToWrite.Add(toLog);
+						logBox.AppendText(toLog);
+						logBox.AppendText(Environment.NewLine);
 					}
 				}
 			}
 			string titlefinal2 = "Notice";
-			MessageBox.Show("Download complete, DEBs are located in the 'Debs' folder\nPlease check the log (log.txt) for any more details", titlefinal2);
+			MessageBox.Show("Download complete, DEBs are located in the 'Debs' folder\nPlease check the log for any more details", titlefinal2);
+			MessageBox.Show("The program will now restart", titlefinal2);
 			StreamWriter SaveFile = new StreamWriter("log.txt");
 			foreach (string s in logToWrite)
 			{

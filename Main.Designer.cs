@@ -32,15 +32,16 @@
             this.removeAllFromQueueBtn = new System.Windows.Forms.Button();
             this.addToQueueBtn = new System.Windows.Forms.Button();
             this.addAllToQueueBtn = new System.Windows.Forms.Button();
+            this.logBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addRepoBtn
             // 
             this.addRepoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addRepoBtn.Location = new System.Drawing.Point(9, 373);
-            this.addRepoBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addRepoBtn.Location = new System.Drawing.Point(12, 312);
+            this.addRepoBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addRepoBtn.Name = "addRepoBtn";
-            this.addRepoBtn.Size = new System.Drawing.Size(191, 24);
+            this.addRepoBtn.Size = new System.Drawing.Size(187, 24);
             this.addRepoBtn.TabIndex = 0;
             this.addRepoBtn.Text = "Add Repo";
             this.addRepoBtn.UseVisualStyleBackColor = true;
@@ -49,10 +50,10 @@
             // addRepoBox
             // 
             this.addRepoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addRepoBox.Location = new System.Drawing.Point(9, 349);
-            this.addRepoBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addRepoBox.Location = new System.Drawing.Point(12, 286);
+            this.addRepoBox.Margin = new System.Windows.Forms.Padding(2);
             this.addRepoBox.Name = "addRepoBox";
-            this.addRepoBox.Size = new System.Drawing.Size(191, 20);
+            this.addRepoBox.Size = new System.Drawing.Size(187, 20);
             this.addRepoBox.TabIndex = 1;
             // 
             // repoListBox
@@ -60,19 +61,19 @@
             this.repoListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.repoListBox.FormattingEnabled = true;
-            this.repoListBox.Location = new System.Drawing.Point(9, 10);
-            this.repoListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.repoListBox.Location = new System.Drawing.Point(12, 10);
+            this.repoListBox.Margin = new System.Windows.Forms.Padding(2);
             this.repoListBox.Name = "repoListBox";
-            this.repoListBox.Size = new System.Drawing.Size(191, 329);
+            this.repoListBox.Size = new System.Drawing.Size(187, 264);
             this.repoListBox.TabIndex = 2;
             // 
             // clearAllReposBtn
             // 
             this.clearAllReposBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearAllReposBtn.Location = new System.Drawing.Point(9, 457);
-            this.clearAllReposBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearAllReposBtn.Location = new System.Drawing.Point(11, 396);
+            this.clearAllReposBtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearAllReposBtn.Name = "clearAllReposBtn";
-            this.clearAllReposBtn.Size = new System.Drawing.Size(191, 24);
+            this.clearAllReposBtn.Size = new System.Drawing.Size(188, 24);
             this.clearAllReposBtn.TabIndex = 3;
             this.clearAllReposBtn.Text = "Remove All Repos";
             this.clearAllReposBtn.UseVisualStyleBackColor = true;
@@ -81,10 +82,10 @@
             // clearSelectedRepoBtn
             // 
             this.clearSelectedRepoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(9, 429);
-            this.clearSelectedRepoBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearSelectedRepoBtn.Location = new System.Drawing.Point(11, 368);
+            this.clearSelectedRepoBtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearSelectedRepoBtn.Name = "clearSelectedRepoBtn";
-            this.clearSelectedRepoBtn.Size = new System.Drawing.Size(191, 24);
+            this.clearSelectedRepoBtn.Size = new System.Drawing.Size(188, 24);
             this.clearSelectedRepoBtn.TabIndex = 4;
             this.clearSelectedRepoBtn.Text = "Remove Selected Repo";
             this.clearSelectedRepoBtn.UseVisualStyleBackColor = true;
@@ -93,10 +94,10 @@
             // openSelectedRepoBtn
             // 
             this.openSelectedRepoBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.openSelectedRepoBtn.Location = new System.Drawing.Point(9, 401);
-            this.openSelectedRepoBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.openSelectedRepoBtn.Location = new System.Drawing.Point(11, 340);
+            this.openSelectedRepoBtn.Margin = new System.Windows.Forms.Padding(2);
             this.openSelectedRepoBtn.Name = "openSelectedRepoBtn";
-            this.openSelectedRepoBtn.Size = new System.Drawing.Size(191, 24);
+            this.openSelectedRepoBtn.Size = new System.Drawing.Size(188, 24);
             this.openSelectedRepoBtn.TabIndex = 5;
             this.openSelectedRepoBtn.Text = "Open Selected Repo";
             this.openSelectedRepoBtn.UseVisualStyleBackColor = true;
@@ -109,17 +110,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.packagesListBox.FormattingEnabled = true;
             this.packagesListBox.Location = new System.Drawing.Point(204, 10);
-            this.packagesListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.packagesListBox.Margin = new System.Windows.Forms.Padding(2);
             this.packagesListBox.Name = "packagesListBox";
-            this.packagesListBox.Size = new System.Drawing.Size(425, 303);
+            this.packagesListBox.Size = new System.Drawing.Size(425, 238);
             this.packagesListBox.TabIndex = 6;
             this.packagesListBox.SelectedIndexChanged += new System.EventHandler(this.packagesListBox_SelectedIndexChanged);
             // 
             // downloadSelectedPackageBtn
             // 
             this.downloadSelectedPackageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(633, 457);
-            this.downloadSelectedPackageBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.downloadSelectedPackageBtn.Location = new System.Drawing.Point(633, 394);
+            this.downloadSelectedPackageBtn.Margin = new System.Windows.Forms.Padding(2);
             this.downloadSelectedPackageBtn.Name = "downloadSelectedPackageBtn";
             this.downloadSelectedPackageBtn.Size = new System.Drawing.Size(200, 24);
             this.downloadSelectedPackageBtn.TabIndex = 7;
@@ -131,8 +132,8 @@
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox.Location = new System.Drawing.Point(204, 460);
-            this.searchBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchBox.Location = new System.Drawing.Point(203, 398);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(2);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(193, 20);
             this.searchBox.TabIndex = 8;
@@ -143,8 +144,8 @@
             // 
             this.detailsBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.detailsBox.Location = new System.Drawing.Point(204, 317);
-            this.detailsBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.detailsBox.Location = new System.Drawing.Point(203, 258);
+            this.detailsBox.Margin = new System.Windows.Forms.Padding(2);
             this.detailsBox.Multiline = true;
             this.detailsBox.Name = "detailsBox";
             this.detailsBox.ReadOnly = true;
@@ -155,10 +156,10 @@
             // searchButton
             // 
             this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchButton.Location = new System.Drawing.Point(401, 458);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchButton.Location = new System.Drawing.Point(400, 396);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(21, 23);
+            this.searchButton.Size = new System.Drawing.Size(21, 24);
             this.searchButton.TabIndex = 12;
             this.searchButton.Text = "";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -169,15 +170,15 @@
             this.queueListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.queueListBox.FormattingEnabled = true;
-            this.queueListBox.Location = new System.Drawing.Point(633, 10);
+            this.queueListBox.Location = new System.Drawing.Point(633, 12);
             this.queueListBox.Name = "queueListBox";
-            this.queueListBox.Size = new System.Drawing.Size(200, 381);
+            this.queueListBox.Size = new System.Drawing.Size(200, 316);
             this.queueListBox.TabIndex = 14;
             // 
             // removeFromQueueBtn
             // 
             this.removeFromQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeFromQueueBtn.Location = new System.Drawing.Point(633, 429);
+            this.removeFromQueueBtn.Location = new System.Drawing.Point(633, 366);
             this.removeFromQueueBtn.Name = "removeFromQueueBtn";
             this.removeFromQueueBtn.Size = new System.Drawing.Size(200, 23);
             this.removeFromQueueBtn.TabIndex = 15;
@@ -188,7 +189,7 @@
             // removeAllFromQueueBtn
             // 
             this.removeAllFromQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeAllFromQueueBtn.Location = new System.Drawing.Point(633, 400);
+            this.removeAllFromQueueBtn.Location = new System.Drawing.Point(633, 337);
             this.removeAllFromQueueBtn.Name = "removeAllFromQueueBtn";
             this.removeAllFromQueueBtn.Size = new System.Drawing.Size(200, 23);
             this.removeAllFromQueueBtn.TabIndex = 16;
@@ -199,7 +200,7 @@
             // addToQueueBtn
             // 
             this.addToQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addToQueueBtn.Location = new System.Drawing.Point(533, 458);
+            this.addToQueueBtn.Location = new System.Drawing.Point(532, 396);
             this.addToQueueBtn.Name = "addToQueueBtn";
             this.addToQueueBtn.Size = new System.Drawing.Size(96, 23);
             this.addToQueueBtn.TabIndex = 17;
@@ -209,7 +210,8 @@
             // 
             // addAllToQueueBtn
             // 
-            this.addAllToQueueBtn.Location = new System.Drawing.Point(427, 458);
+            this.addAllToQueueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addAllToQueueBtn.Location = new System.Drawing.Point(426, 396);
             this.addAllToQueueBtn.Name = "addAllToQueueBtn";
             this.addAllToQueueBtn.Size = new System.Drawing.Size(100, 23);
             this.addAllToQueueBtn.TabIndex = 18;
@@ -217,11 +219,25 @@
             this.addAllToQueueBtn.UseVisualStyleBackColor = true;
             this.addAllToQueueBtn.Click += new System.EventHandler(this.addAllToQueueBtn_Click);
             // 
+            // logBox
+            // 
+            this.logBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logBox.Location = new System.Drawing.Point(12, 425);
+            this.logBox.Multiline = true;
+            this.logBox.Name = "logBox";
+            this.logBox.ReadOnly = true;
+            this.logBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.logBox.Size = new System.Drawing.Size(821, 150);
+            this.logBox.TabIndex = 19;
+            this.logBox.Text = "Log";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 488);
+            this.ClientSize = new System.Drawing.Size(845, 587);
+            this.Controls.Add(this.logBox);
             this.Controls.Add(this.addAllToQueueBtn);
             this.Controls.Add(this.addToQueueBtn);
             this.Controls.Add(this.removeAllFromQueueBtn);
@@ -239,7 +255,7 @@
             this.Controls.Add(this.addRepoBox);
             this.Controls.Add(this.addRepoBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Windows Repo Tool v2.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -289,5 +305,6 @@
         private System.Windows.Forms.Button removeAllFromQueueBtn;
         private System.Windows.Forms.Button addToQueueBtn;
         private System.Windows.Forms.Button addAllToQueueBtn;
+        private System.Windows.Forms.TextBox logBox;
     }
 }
